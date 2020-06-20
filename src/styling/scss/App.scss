@@ -1,0 +1,101 @@
+@import "setup";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;700;900&display=swap");
+
+$light: #eef0f3;
+$dark: #1f1b24;
+
+$blue: #1170ff;
+
+.lightBlock {
+  border-radius: 20px;
+  background-color: $light;
+  box-shadow: 22px 22px 44px #d4d6d8, -22px -22px 44px #ffffff;
+}
+
+.darkBlock {
+  border-radius: 20px;
+  background-color: $dark;
+  box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: $light;
+}
+
+.wrapper {
+  width: 85%;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  line-height: 130%;
+  margin-top: 6rem;
+}
+
+.card {
+  // border: 1px solid blue;
+  border-radius: 20px;
+  margin: 1.5rem 0;
+  padding: 1rem 0;
+
+  .cardTitle,
+  .cardDescription,
+  .downloadLabel {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cardWrapper {
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+    font-weight: 900;
+  }
+
+  .cardDescription {
+    padding-top: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 300;
+  }
+
+  .downloadLabel {
+    padding-top: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 900;
+  }
+}
+
+.downloadBlocks {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  margin-left: -0.25rem;
+  .downloadBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    position: relative;
+    margin: 0.25rem 0.25rem;
+
+    p {
+      color: $blue;
+      font-size: 1.125rem;
+      font-weight: 700;
+      line-height: 130%;
+      padding: 0.25rem 1rem;
+      z-index: 1;
+    }
+  }
+}
