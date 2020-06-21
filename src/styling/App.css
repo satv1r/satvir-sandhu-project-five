@@ -339,6 +339,30 @@ textarea {
   overflow: hidden;
 }
 
+.blue {
+  color: #1170ff;
+}
+
+.green {
+  color: #27b30b;
+}
+
+.pink {
+  color: #cc0465;
+}
+
+.purple {
+  color: #b700ba;
+}
+
+.red {
+  color: #d10034;
+}
+
+.teal {
+  color: #00a0a8;
+}
+
 .lightBlock {
   border-radius: 20px;
   background-color: #eef0f3;
@@ -376,7 +400,7 @@ h1 {
 .card {
   border-radius: 20px;
   margin: 1.5rem 0;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
 }
 
 .card .cardTitle,
@@ -388,12 +412,12 @@ h1 {
 
 .card .cardWrapper {
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 1.5rem;
   margin: 0 auto;
 }
 
 .card .cardTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 900;
 }
 
@@ -438,7 +462,6 @@ h1 {
 }
 
 .downloadBlocks .downloadBlock p {
-  color: #1170ff;
   font-size: 1.125rem;
   font-weight: 700;
   line-height: 130%;

@@ -5,6 +5,30 @@ $light: #eef0f3;
 $dark: #1f1b24;
 
 $blue: #1170ff;
+$green: #27b30b;
+$pink: #cc0465;
+$purple: #b700ba;
+$red: #d10034;
+$teal: #00a0a8;
+
+.blue {
+  color: $blue;
+}
+.green {
+  color: $green;
+}
+.pink {
+  color: $pink;
+}
+.purple {
+  color: $purple;
+}
+.red {
+  color: $red;
+}
+.teal {
+  color: $teal;
+}
 
 .lightBlock {
   border-radius: 20px;
@@ -42,7 +66,7 @@ h1 {
   // border: 1px solid blue;
   border-radius: 20px;
   margin: 1.5rem 0;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
 
   .cardTitle,
   .cardDescription,
@@ -53,12 +77,12 @@ h1 {
 
   .cardWrapper {
     width: 100%;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
     margin: 0 auto;
   }
 
   .cardTitle {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 900;
   }
 
@@ -90,7 +114,6 @@ h1 {
     margin: 0.25rem 0.25rem;
 
     p {
-      color: $blue;
       font-size: 1.125rem;
       font-weight: 700;
       line-height: 130%;

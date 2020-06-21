@@ -1,21 +1,18 @@
 import React from "react";
 import DownloadBlock from "./DownloadBlock";
 
-const Card = () => {
+const Card = ({ title, desc, platforms }) => {
   return (
     <article className="card lightBlock">
       <div className="cardWrapper">
-        <h2 className="cardTitle">Shop</h2>
-        <p className="cardDescription">
-          An awesome delivery tracker that recommends new stores. Built in
-          Ottawa, Ontario
-        </p>
-        <p className="downloadLabel">Download</p>
+        <h2 className="cardTitle">{title}</h2>
+        <p className="cardDescription">{desc}</p>
+        <p className="downloadLabel">Download / Use</p>
         <div className="downloadBlocks">
-          <DownloadBlock />
-          <DownloadBlock />
-          <DownloadBlock />
-          <DownloadBlock />
+          {platforms.map((platform, index) => {
+            return <DownloadBlock platform={platform} />;
+          })}
+          {console.log(platforms)}
         </div>
       </div>
     </article>
