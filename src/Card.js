@@ -12,7 +12,6 @@ const Card = ({ title, desc, platforms }) => {
           {platforms.map((platform, index) => {
             return <DownloadBlock platform={platform} key={title + index} />;
           })}
-          {console.log(platforms)}
         </div>
       </div>
     </article>

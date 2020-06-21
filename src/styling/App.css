@@ -370,6 +370,13 @@ textarea {
           box-shadow: 22px 22px 44px #d4d6d8, -22px -22px 44px #ffffff;
 }
 
+.lightBlockIntense {
+  border-radius: 20px;
+  background: #eef0f3;
+  -webkit-box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
+          box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
+}
+
 .darkBlock {
   border-radius: 20px;
   background-color: #1f1b24;
@@ -471,4 +478,59 @@ a {
   line-height: 130%;
   padding: 0.25rem 1rem;
   z-index: 1;
+}
+
+.submissionForm {
+  padding: 1.5rem;
+  margin: 5rem 0;
+}
+
+.submissionForm h2 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.submissionForm label {
+  font-size: 1.25rem;
+  font-weight: 700;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.submissionForm input[type="text"] {
+  height: 2rem;
+  padding: 0 1rem;
+}
+
+.submissionForm input[type="text"],
+.submissionForm textarea {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+  border: none;
+  -webkit-appearance: none;
+}
+
+.submissionForm textarea {
+  height: 8rem;
+  font-family: "Roboto", sans-serif;
+  padding: 1rem;
+}
+
+.submissionForm button {
+  width: 100%;
+  border: none;
+  height: 2rem;
+}
+
+.submissionForm input[type="checkbox"] {
+  margin-right: 1rem;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  outline: none;
+  border: 1px solid black;
 }
