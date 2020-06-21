@@ -11,7 +11,9 @@ const DownloadBlock = ({ platform }) => {
   };
   return (
     <div className="downloadBlock lightBlock">
-      <p className={colors[platform]}>{platform}</p>
+      <a href={platform[1]}>
+        <p className={colors[platform[0]]}>{platform[0]}</p>
+      </a>
     </div>
   );
 };

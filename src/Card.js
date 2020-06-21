@@ -10,7 +10,7 @@ const Card = ({ title, desc, platforms }) => {
         <p className="downloadLabel">Download / Use</p>
         <div className="downloadBlocks">
           {platforms.map((platform, index) => {
-            return <DownloadBlock platform={platform} />;
+            return <DownloadBlock platform={platform} key={title + index} />;
           })}
           {console.log(platforms)}
         </div>

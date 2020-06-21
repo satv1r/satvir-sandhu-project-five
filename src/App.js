@@ -10,13 +10,16 @@ class App extends Component {
           title: "Shop",
           desc:
             "An awesome delivery tracker that recommends new stores. Built in Ottawa Ontario",
-          platforms: ["iOS", "Android"],
+          platforms: [
+            ["iOS", "lol"],
+            ["Android", "haha"],
+          ],
         },
         {
           title: "Apollo for Reddit",
           desc:
             "An award winning reddit client, made entirely by a 1 person team from Halifax, Nova Scotia.",
-          platforms: ["iOS"],
+          platforms: [["iOS", "lolol"]],
         },
       ],
     };
