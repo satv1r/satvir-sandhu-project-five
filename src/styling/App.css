@@ -389,6 +389,7 @@ textarea {
 }
 
 .darkBlock {
+  color: #eef0f3;
   border-radius: 20px;
   background-color: #1f1b24;
   -webkit-box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
@@ -398,8 +399,6 @@ textarea {
 body {
   font-family: "Roboto", sans-serif;
   background-color: #eef0f3;
-  -webkit-transition: 0.1s;
-  transition: 0.1s;
 }
 
 .wrapper {
@@ -435,6 +434,7 @@ a {
   display: -ms-flexbox;
   display: flex;
   border-radius: 20px;
+  background-color: inherit;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;

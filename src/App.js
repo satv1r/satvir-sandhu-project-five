@@ -42,33 +42,27 @@ class App extends Component {
     const body = document.body;
     const downloadBlocks = document.querySelectorAll(".downloadBlock");
     const cards = document.querySelectorAll(".card");
-    cards.forEach((card) => {
-      if (card.classList.contains("lightBlock")) {
-        card.classList.remove("lightBlock");
-        card.classList.add("darkBlock");
+    const textInputs = document.querySelectorAll('input[type="text"]');
+    const submitButton = document.querySelector(".submit");
+    const textArea = document.querySelector("textarea");
+    const elements = [];
+    elements.push(...cards);
+    elements.push(body);
+    elements.push(...downloadBlocks);
+    elements.push(...textInputs);
+    elements.push(textArea);
+    elements.push(submitButton);
+
+    elements.forEach((element) => {
+      if (element.classList.contains("darkBlock")) {
+        element.classList.remove("darkBlock");
+        element.classList.add("lightBlock");
       } else {
-        card.classList.remove("darkBlock");
-        card.classList.add("lightBlock");
+        element.classList.remove("lightBlock");
+        element.classList.add("darkBlock");
       }
     });
-    if (body.classList.contains("darkBlock")) {
-      body.classList.remove("darkBlock");
-      body.classList.remove("light");
-      body.classList.add("lightBlock");
-    } else {
-      body.classList.remove("lightBlock");
-      body.classList.add("light");
-      body.classList.add("darkBlock");
-    }
-    downloadBlocks.forEach((block) => {
-      if (block.classList.contains("darkBlock")) {
-        block.classList.remove("darkBlock");
-        block.classList.add("lightBlock");
-      } else {
-        block.classList.remove("lightBlock");
-        block.classList.add("darkBlock");
-      }
-    });
+
     // const
     // body.style.backgroundColor = "black";
   }
@@ -350,7 +344,7 @@ class App extends Component {
               />
             </fieldset>
 
-            <button className="lightBlock" onClick={this.handleSubmit}>
+            <button className="lightBlock submit" onClick={this.handleSubmit}>
               Submit
             </button>
           </form>

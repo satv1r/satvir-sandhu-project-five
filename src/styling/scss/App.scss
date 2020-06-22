@@ -47,6 +47,7 @@ $teal: #00a0a8;
 }
 
 .darkBlock {
+  color: $light;
   border-radius: 20px;
   background-color: $dark;
   box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
@@ -55,7 +56,6 @@ $teal: #00a0a8;
 body {
   font-family: "Roboto", sans-serif;
   background-color: $light;
-  transition: 0.1s;
 }
 
 .wrapper {
@@ -89,6 +89,7 @@ a {
   border: none;
   display: flex;
   border-radius: 20px;
+  background-color: inherit;
   justify-content: space-between;
   .light,
   .dark {
