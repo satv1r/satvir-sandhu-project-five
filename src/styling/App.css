@@ -339,6 +339,20 @@ textarea {
   overflow: hidden;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .blue {
   color: #1170ff;
 }
@@ -497,6 +511,9 @@ a {
   font-size: 1.25rem;
   font-weight: 700;
   width: 100%;
+}
+
+.submissionForm .raise {
   position: relative;
   z-index: 1;
 }
@@ -533,4 +550,16 @@ a {
           transform: scale(1.5);
   outline: none;
   border: 1px solid black;
+}
+
+.submissionForm .urls {
+  margin-top: 1.5rem;
+}
+
+.submissionForm .urls input[type="text"] {
+  display: none;
+}
+
+.submissionForm button {
+  margin-top: 2rem;
 }
