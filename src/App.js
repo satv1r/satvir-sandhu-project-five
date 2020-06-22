@@ -94,6 +94,10 @@ class App extends Component {
       input.value = "";
       input.checked = false;
     });
+    const hiddenInputs = document.querySelectorAll('input[type="text"]');
+    hiddenInputs.forEach((input) => {
+      input.style.display = "none";
+    });
   };
 
   componentDidMount() {
