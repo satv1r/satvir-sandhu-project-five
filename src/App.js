@@ -38,6 +38,41 @@ class App extends Component {
     }
   }
 
+  switchTheme(element) {
+    const body = document.body;
+    const downloadBlocks = document.querySelectorAll(".downloadBlock");
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card) => {
+      if (card.classList.contains("lightBlock")) {
+        card.classList.remove("lightBlock");
+        card.classList.add("darkBlock");
+      } else {
+        card.classList.remove("darkBlock");
+        card.classList.add("lightBlock");
+      }
+    });
+    if (body.classList.contains("darkBlock")) {
+      body.classList.remove("darkBlock");
+      body.classList.remove("light");
+      body.classList.add("lightBlock");
+    } else {
+      body.classList.remove("lightBlock");
+      body.classList.add("light");
+      body.classList.add("darkBlock");
+    }
+    downloadBlocks.forEach((block) => {
+      if (block.classList.contains("darkBlock")) {
+        block.classList.remove("darkBlock");
+        block.classList.add("lightBlock");
+      } else {
+        block.classList.remove("lightBlock");
+        block.classList.add("darkBlock");
+      }
+    });
+    // const
+    // body.style.backgroundColor = "black";
+  }
+
   handleChange = (e) => {
     this.setState({
       submission: {
@@ -117,6 +152,7 @@ class App extends Component {
       }
 
       this.setState({
+        ...this.state,
         apps: newState,
       });
     });
@@ -132,6 +168,18 @@ class App extends Component {
     return (
       <Fragment>
         <div className="wrapper">
+          <button
+            onClick={this.switchTheme}
+            className="themeSwitcher"
+            id="themeSwitcher"
+          >
+            <div className="light">
+              <i className="fas fa-sun fa-2x"></i>
+            </div>
+            <div className="dark">
+              <i className="fas fa-moon fa-2x"></i>
+            </div>
+          </button>
           <h1>Browse cool apps made right here in Canada</h1>
           {this.state.apps.map((app) => {
             return (
@@ -152,7 +200,7 @@ class App extends Component {
             <input
               type="text"
               id="title"
-              className="lightBlockIntense"
+              className="lightBlock"
               maxLength="22"
               required
               onChange={this.handleChange}
@@ -163,7 +211,7 @@ class App extends Component {
             </label>
             <textarea
               id="desc"
-              className="lightBlockIntense"
+              className="lightBlock"
               maxLength="100"
               required
               onChange={this.handleChange}
@@ -186,7 +234,7 @@ class App extends Component {
               <input
                 type="text"
                 id="iosUrl"
-                className="lightBlockIntense"
+                className="lightBlock"
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -208,7 +256,7 @@ class App extends Component {
               <input
                 type="text"
                 id="androidUrl"
-                className="lightBlockIntense"
+                className="lightBlock"
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -230,7 +278,7 @@ class App extends Component {
               <input
                 type="text"
                 id="macUrl"
-                className="lightBlockIntense"
+                className="lightBlock"
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -252,7 +300,7 @@ class App extends Component {
               <input
                 type="text"
                 id="windowsUrl"
-                className="lightBlockIntense"
+                className="lightBlock"
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -274,7 +322,7 @@ class App extends Component {
               <input
                 type="text"
                 id="linuxUrl"
-                className="lightBlockIntense"
+                className="lightBlock"
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -296,13 +344,13 @@ class App extends Component {
               <input
                 type="text"
                 id="webUrl"
-                className="lightBlockIntense"
+                className="lightBlock"
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
             </fieldset>
 
-            <button className="lightBlockIntense" onClick={this.handleSubmit}>
+            <button className="lightBlock" onClick={this.handleSubmit}>
               Submit
             </button>
           </form>

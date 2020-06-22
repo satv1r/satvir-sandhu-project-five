@@ -30,15 +30,19 @@ $teal: #00a0a8;
   color: $teal;
 }
 
-.lightBlock {
-  border-radius: 20px;
-  background-color: $light;
-  box-shadow: 22px 22px 44px #d4d6d8, -22px -22px 44px #ffffff;
+.light {
+  color: $light;
 }
 
-.lightBlockIntense {
+// .lightBlock {
+//   border-radius: 20px;
+//   background-color: $light;
+//   box-shadow: 22px 22px 44px #d4d6d8, -22px -22px 44px #ffffff;
+// }
+
+.lightBlock {
   border-radius: 20px;
-  background: #eef0f3;
+  background: $light;
   box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
 }
 
@@ -51,11 +55,13 @@ $teal: #00a0a8;
 body {
   font-family: "Roboto", sans-serif;
   background-color: $light;
+  transition: 0.1s;
 }
 
 .wrapper {
   width: 85%;
   margin: 0 auto;
+  position: relative;
 }
 
 h1 {
@@ -65,11 +71,41 @@ h1 {
   padding: 0 1rem;
   margin: 0 auto;
   line-height: 130%;
-  margin-top: 6rem;
+  padding-top: 6rem;
 }
 
 a {
   text-decoration: none;
+}
+
+.themeSwitcher {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 6rem;
+  height: 2.7rem;
+  padding: 0;
+  margin-top: 2rem;
+  border: none;
+  display: flex;
+  border-radius: 20px;
+  justify-content: space-between;
+  .light,
+  .dark {
+    width: 45%;
+    height: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .light {
+    background-color: lightblue;
+  }
+
+  .dark {
+    background-color: gray;
+  }
 }
 
 .card {
