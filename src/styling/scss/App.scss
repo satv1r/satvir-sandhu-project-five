@@ -75,32 +75,49 @@ h1 {
   padding-top: 6rem;
 }
 
-h3 {
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-  // text-align: center;
-  font-size: 1.5rem;
-  // font-weight: 700;
-}
-
 a {
   text-decoration: none;
 }
 
-select {
-  display: block;
-  margin: 1.25rem auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  appearance: none;
-  background-color: $light;
-  font-size: 1.5rem;
-  height: 3rem;
-  padding: 0 2rem;
-  text-align: center;
-  font-weight: 700;
+.filterGroup {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  label {
+    padding: 0 1rem;
+    font-size: 1.75rem;
+    width: auto;
+    transform: translate(0, -25%);
+  }
+  select {
+    display: block;
+    // margin: 0 auto;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    width: 60%;
+    border: none;
+    outline: none;
+    appearance: none;
+    background-color: $light;
+    font-size: 1.5rem;
+    height: 3rem;
+    padding: 0 2rem;
+    text-align: center;
+    font-weight: 700;
+  }
+
+  select.lightBlock {
+    background-color: $dark;
+    color: $light;
+    box-shadow: none;
+  }
+
+  select.darkBlock {
+    background-color: $light;
+    color: $dark;
+    box-shadow: none;
+  }
 }
 
 .themeSwitcher {
@@ -236,6 +253,11 @@ button.darkBlock {
   }
 }
 
+// .downloadBlock.lightBlock {
+//   background-color: $blue;
+//   box-shadow: none;
+// }
+
 .submissionForm {
   margin: 0 auto;
 
@@ -316,6 +338,7 @@ button.darkBlock {
 
   button {
     margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
@@ -335,9 +358,13 @@ button.darkBlock {
 }
 
 @media (min-width: 700px) {
-  select {
-    width: 50%;
+  .filterGroup {
+    flex-direction: row;
+    select {
+      width: 35%;
+    }
   }
+
   h1 {
     font-size: 4rem;
     width: 80%;

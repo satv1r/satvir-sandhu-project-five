@@ -425,21 +425,37 @@ h1 {
   padding-top: 6rem;
 }
 
-h3 {
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
-  padding: 0 1rem;
-  font-size: 1.5rem;
-}
-
 a {
   text-decoration: none;
 }
 
-select {
+.filterGroup {
+  margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.filterGroup label {
+  padding: 0 1rem;
+  font-size: 1.75rem;
+  width: auto;
+  -webkit-transform: translate(0, -25%);
+          transform: translate(0, -25%);
+}
+
+.filterGroup select {
   display: block;
-  margin: 1.25rem auto;
-  width: 80%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  width: 60%;
   border: none;
   outline: none;
   -webkit-appearance: none;
@@ -451,6 +467,20 @@ select {
   padding: 0 2rem;
   text-align: center;
   font-weight: 700;
+}
+
+.filterGroup select.lightBlock {
+  background-color: #1f1b24;
+  color: #eef0f3;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.filterGroup select.darkBlock {
+  background-color: #eef0f3;
+  color: #1f1b24;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .themeSwitcher {
@@ -696,6 +726,7 @@ button.darkBlock .dark {
 
 .submissionForm button {
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 375px) {
@@ -712,8 +743,14 @@ button.darkBlock .dark {
 }
 
 @media (min-width: 700px) {
-  select {
-    width: 50%;
+  .filterGroup {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .filterGroup select {
+    width: 35%;
   }
   h1 {
     font-size: 4rem;
