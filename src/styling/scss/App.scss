@@ -30,27 +30,27 @@ $teal: #00a0a8;
   color: $teal;
 }
 
-.light {
-  color: $light;
-}
-
-// .lightBlock {
-//   border-radius: 20px;
-//   background-color: $light;
-//   box-shadow: 22px 22px 44px #d4d6d8, -22px -22px 44px #ffffff;
-// }
-
 .lightBlock {
   border-radius: 20px;
-  background: $light;
+  color: $dark;
+  background-color: $light;
   box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
 }
 
 .darkBlock {
-  color: $light;
-  border-radius: 20px;
   background-color: $dark;
+  border-radius: 20px;
+  color: $light;
   box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
+}
+
+.darkBody {
+  background-color: $dark;
+  color: $light;
+}
+.lightBody {
+  background-color: $light;
+  color: $dark;
 }
 
 body {
@@ -63,6 +63,7 @@ body {
   width: 85%;
   margin: 0 auto;
   position: relative;
+  max-width: 1600px;
 }
 
 h1 {
@@ -70,7 +71,6 @@ h1 {
   font-weight: 900;
   width: 100%;
   padding: 0 1rem;
-  margin: 0 auto;
   line-height: 130%;
   padding-top: 6rem;
 }
@@ -100,24 +100,64 @@ select {
   justify-content: space-between;
   .light,
   .dark {
-    width: 45%;
+    width: 50%;
     height: 100%;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .light {
-    background-color: lightblue;
+
+  .current {
+    transition: 0.1s ease-in-out;
+    height: 100%;
+    width: 50%;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
   }
 
-  .dark {
-    background-color: gray;
+  .lightCurrent {
+    transform: translate(-100%, 0);
+    background: $dark;
   }
+
+  .darkCurrent {
+    transform: translate(0, 0);
+    background: $light;
+  }
+}
+
+button.lightBlock {
+  .light {
+    color: $light;
+  }
+  .dark {
+    color: $dark;
+  }
+}
+
+button.darkBlock {
+  .light {
+    color: $light;
+  }
+  .dark {
+    color: $dark;
+  }
+}
+
+.cards {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .card {
   // border: 1px solid blue;
+  width: 100%;
   border-radius: 20px;
   margin: 1.5rem 0;
   padding: 1.25rem 0;
@@ -141,13 +181,13 @@ select {
   }
 
   .cardDescription {
-    padding-top: 0.5rem;
+    padding-top: 1rem;
     font-size: 1.125rem;
     font-weight: 300;
   }
 
   .downloadLabel {
-    padding-top: 0.5rem;
+    padding-top: 1.5rem;
     font-size: 1.125rem;
     font-weight: 900;
   }
@@ -158,6 +198,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   margin: 0;
+  padding-top: 0.5rem;
   margin-left: -0.25rem;
   .downloadBlock {
     display: flex;
@@ -178,8 +219,7 @@ select {
 }
 
 .submissionForm {
-  padding: 1.5rem;
-  margin: 5rem 0;
+  margin: 5rem auto;
 
   h2 {
     font-size: 2rem;
@@ -204,7 +244,6 @@ select {
 
   input[type="text"] {
     height: 2rem;
-    padding: 0 1rem;
   }
 
   input[type="text"],
@@ -219,7 +258,6 @@ select {
   textarea {
     height: 8rem;
     font-family: "Roboto", sans-serif;
-    padding: 1rem;
   }
 
   button {
@@ -244,5 +282,75 @@ select {
 
   button {
     margin-top: 2rem;
+  }
+}
+
+@media (min-width: 375px) {
+  h1 {
+    font-size: 2.75rem;
+    width: 80%;
+  }
+  .card {
+    .cardTitle {
+      font-size: 1.5rem;
+    }
+    .cardDescription {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+@media (min-width: 700px) {
+  h1 {
+    font-size: 4.5rem;
+    width: 60%;
+  }
+  .card {
+    width: 45%;
+    .cardTitle {
+      font-size: 1.5rem;
+    }
+    .cardDescription {
+      font-size: 1.35rem;
+    }
+  }
+
+  form {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 6rem;
+    width: 75%;
+  }
+  .card {
+    width: 30%;
+    .cardTitle {
+      font-size: 1.75rem;
+    }
+    .cardDescription {
+      font-size: 1.5rem;
+    }
+  }
+
+  .card:nth-child(3n + 2) {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+
+  .cards {
+    justify-content: flex-start;
+  }
+
+  form {
+    width: 30%;
+    margin: 0 auto;
+    h2,
+    label {
+      text-align: center;
+    }
   }
 }

@@ -2,7 +2,6 @@ import React from "react";
 import DownloadBlock from "./DownloadBlock";
 
 const Card = ({ title, desc, platforms, theme }) => {
-  console.log(theme);
   return (
     <article className={"card " + theme}>
       <div className="cardWrapper">

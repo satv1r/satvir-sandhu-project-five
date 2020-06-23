@@ -72,7 +72,7 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("submitting");
     const platformPairs = {
       iosUrl: "iOS",
       androidUrl: "Android",
@@ -155,7 +155,19 @@ class App extends Component {
     const windowsUrl = document.getElementById("windowsUrl");
     const linuxUrl = document.getElementById("linuxUrl");
     const webUrl = document.getElementById("webUrl");
-    document.body.classList.value = this.state.theme;
+
+    if (this.state.theme === "darkBlock") {
+      document.body.classList.value = "darkBody";
+    } else {
+      document.body.classList.value = "lightBody";
+    }
+
+    let buttonTheme = "lightTheme";
+    if (this.state.theme === "darkBlock") {
+      buttonTheme = "current darkCurrent";
+    } else {
+      buttonTheme = "current lightCurrent";
+    }
 
     let appsToRender = [];
     this.state.apps.forEach((app) => {
@@ -175,7 +187,7 @@ class App extends Component {
         <div className="wrapper">
           <button
             onClick={this.switchTheme}
-            className="themeSwitcher"
+            className={"themeSwitcher " + this.state.theme}
             id="themeSwitcher"
           >
             <div className="light">
@@ -184,6 +196,7 @@ class App extends Component {
             <div className="dark">
               <i className="fas fa-moon fa-2x"></i>
             </div>
+            <div className={buttonTheme} id="current"></div>
           </button>
           <h1>Browse cool apps made right here in Canada</h1>
           <select name="filter" id="filter" onChange={this.filter}>
@@ -195,18 +208,19 @@ class App extends Component {
             <option value="Linux">Linux</option>
             <option value="Web">Web</option>
           </select>
-
-          {appsToRender.map((app) => {
-            return (
-              <Card
-                title={app.title}
-                desc={app.desc}
-                platforms={app.platforms}
-                key={app.key}
-                theme={this.state.theme}
-              />
-            );
-          })}
+          <div className="cards">
+            {appsToRender.map((app) => {
+              return (
+                <Card
+                  title={app.title}
+                  desc={app.desc}
+                  platforms={app.platforms}
+                  key={app.key}
+                  theme={this.state.theme}
+                />
+              );
+            })}
+          </div>
           <form className="submissionForm" onSubmit={this.handleSubmit}>
             <h2>Submit an App</h2>
 
@@ -217,7 +231,7 @@ class App extends Component {
               type="text"
               id="title"
               className={this.state.theme}
-              maxLength="22"
+              maxLength="20"
               required
               onChange={this.handleChange}
             />
@@ -366,7 +380,9 @@ class App extends Component {
               />
             </fieldset>
 
-            <button className={this.state.theme + " submit"}>Submit</button>
+            <button type="submit" className={this.state.theme + " submit"}>
+              Submit
+            </button>
           </form>
         </div>
       </Fragment>

@@ -377,23 +377,30 @@ textarea {
   color: #00a0a8;
 }
 
-.light {
-  color: #eef0f3;
-}
-
 .lightBlock {
   border-radius: 20px;
-  background: #eef0f3;
+  color: #1f1b24;
+  background-color: #eef0f3;
   -webkit-box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
           box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
 }
 
 .darkBlock {
-  color: #eef0f3;
-  border-radius: 20px;
   background-color: #1f1b24;
+  border-radius: 20px;
+  color: #eef0f3;
   -webkit-box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
           box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
+}
+
+.darkBody {
+  background-color: #1f1b24;
+  color: #eef0f3;
+}
+
+.lightBody {
+  background-color: #eef0f3;
+  color: #1f1b24;
 }
 
 body {
@@ -406,6 +413,7 @@ body {
   width: 85%;
   margin: 0 auto;
   position: relative;
+  max-width: 1600px;
 }
 
 h1 {
@@ -413,7 +421,6 @@ h1 {
   font-weight: 900;
   width: 100%;
   padding: 0 1rem;
-  margin: 0 auto;
   line-height: 130%;
   padding-top: 6rem;
 }
@@ -449,7 +456,7 @@ select {
 
 .themeSwitcher .light,
 .themeSwitcher .dark {
-  width: 45%;
+  width: 50%;
   height: 100%;
   border-radius: 20px;
   display: -webkit-box;
@@ -463,15 +470,60 @@ select {
           justify-content: center;
 }
 
-.themeSwitcher .light {
-  background-color: lightblue;
+.themeSwitcher .current {
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+  height: 100%;
+  width: 50%;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
 }
 
-.themeSwitcher .dark {
-  background-color: gray;
+.themeSwitcher .lightCurrent {
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  background: #1f1b24;
+}
+
+.themeSwitcher .darkCurrent {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  background: #eef0f3;
+}
+
+button.lightBlock .light {
+  color: #eef0f3;
+}
+
+button.lightBlock .dark {
+  color: #1f1b24;
+}
+
+button.darkBlock .light {
+  color: #eef0f3;
+}
+
+button.darkBlock .dark {
+  color: #1f1b24;
+}
+
+.cards {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .card {
+  width: 100%;
   border-radius: 20px;
   margin: 1.5rem 0;
   padding: 1.25rem 0;
@@ -496,13 +548,13 @@ select {
 }
 
 .card .cardDescription {
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   font-size: 1.125rem;
   font-weight: 300;
 }
 
 .card .downloadLabel {
-  padding-top: 0.5rem;
+  padding-top: 1.5rem;
   font-size: 1.125rem;
   font-weight: 900;
 }
@@ -515,6 +567,7 @@ select {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: 0;
+  padding-top: 0.5rem;
   margin-left: -0.25rem;
 }
 
@@ -544,8 +597,7 @@ select {
 }
 
 .submissionForm {
-  padding: 1.5rem;
-  margin: 5rem 0;
+  margin: 5rem auto;
 }
 
 .submissionForm h2 {
@@ -569,7 +621,6 @@ select {
 
 .submissionForm input[type="text"] {
   height: 2rem;
-  padding: 0 1rem;
 }
 
 .submissionForm input[type="text"],
@@ -584,7 +635,6 @@ select {
 .submissionForm textarea {
   height: 8rem;
   font-family: "Roboto", sans-serif;
-  padding: 1rem;
 }
 
 .submissionForm button {
@@ -611,4 +661,70 @@ select {
 
 .submissionForm button {
   margin-top: 2rem;
+}
+
+@media (min-width: 375px) {
+  h1 {
+    font-size: 2.75rem;
+    width: 80%;
+  }
+  .card .cardTitle {
+    font-size: 1.5rem;
+  }
+  .card .cardDescription {
+    font-size: 1.25rem;
+  }
+}
+
+@media (min-width: 700px) {
+  h1 {
+    font-size: 4.5rem;
+    width: 60%;
+  }
+  .card {
+    width: 45%;
+  }
+  .card .cardTitle {
+    font-size: 1.5rem;
+  }
+  .card .cardDescription {
+    font-size: 1.35rem;
+  }
+  form {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 6rem;
+    width: 75%;
+  }
+  .card {
+    width: 30%;
+  }
+  .card .cardTitle {
+    font-size: 1.75rem;
+  }
+  .card .cardDescription {
+    font-size: 1.5rem;
+  }
+  .card:nth-child(3n + 2) {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .cards {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  form {
+    width: 30%;
+    margin: 0 auto;
+  }
+  form h2,
+  form label {
+    text-align: center;
+  }
 }
