@@ -75,6 +75,15 @@ h1 {
   padding-top: 6rem;
 }
 
+h3 {
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+  // text-align: center;
+  font-size: 1.5rem;
+  // font-weight: 700;
+}
+
 a {
   text-decoration: none;
 }
@@ -83,6 +92,15 @@ select {
   display: block;
   margin: 1.25rem auto;
   width: 80%;
+  border: none;
+  outline: none;
+  appearance: none;
+  background-color: $light;
+  font-size: 1.5rem;
+  height: 3rem;
+  padding: 0 2rem;
+  text-align: center;
+  font-weight: 700;
 }
 
 .themeSwitcher {
@@ -159,8 +177,8 @@ button.darkBlock {
   // border: 1px solid blue;
   width: 100%;
   border-radius: 20px;
-  margin: 1.5rem 0;
-  padding: 1.25rem 0;
+  margin: 2rem 0;
+  padding: 2rem 0;
 
   .cardTitle,
   .cardDescription,
@@ -171,7 +189,7 @@ button.darkBlock {
 
   .cardWrapper {
     width: 100%;
-    padding: 0 1.5rem;
+    padding: 0 2rem;
     margin: 0 auto;
   }
 
@@ -199,14 +217,14 @@ button.darkBlock {
   flex-wrap: wrap;
   margin: 0;
   padding-top: 0.5rem;
-  margin-left: -0.25rem;
+  margin-left: -0.75rem;
   .downloadBlock {
     display: flex;
     justify-content: center;
     align-items: center;
     width: fit-content;
     position: relative;
-    margin: 0.25rem 0.25rem;
+    margin: 0.75rem 0.75rem;
 
     p {
       font-size: 1.125rem;
@@ -219,14 +237,15 @@ button.darkBlock {
 }
 
 .submissionForm {
-  margin: 5rem auto;
+  margin: 0 auto;
 
   h2 {
     font-size: 2rem;
     font-weight: 900;
     // width: 100%;
     // text-align: center;
-    margin-bottom: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 1;
   }
@@ -249,10 +268,12 @@ button.darkBlock {
   input[type="text"],
   textarea {
     width: 100%;
-    margin-top: 0.5rem;
-    margin-bottom: 1.25rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    // margin-bottom: 1.25rem;
     border: none;
     -webkit-appearance: none;
+    padding: 1rem;
   }
 
   textarea {
@@ -264,6 +285,19 @@ button.darkBlock {
     width: 100%;
     border: none;
     height: 2rem;
+    color: white;
+  }
+
+  button.lightBlock {
+    color: $light;
+    background-color: $dark;
+    box-shadow: none;
+  }
+
+  button.darkBlock {
+    color: $dark;
+    background-color: $light;
+    box-shadow: none;
   }
 
   input[type="checkbox"] {
@@ -301,9 +335,16 @@ button.darkBlock {
 }
 
 @media (min-width: 700px) {
+  select {
+    width: 50%;
+  }
   h1 {
-    font-size: 4.5rem;
-    width: 60%;
+    font-size: 4rem;
+    width: 80%;
+    line-height: 110%;
+  }
+  h3 {
+    text-align: center;
   }
   .card {
     width: 45%;
@@ -313,17 +354,28 @@ button.darkBlock {
     .cardDescription {
       font-size: 1.35rem;
     }
+
+    .downloadLabel {
+      font-size: 1.25rem;
+    }
   }
 
-  form {
+  .submissionForm {
     width: 50%;
     margin: 0 auto;
+    button {
+      width: 50%;
+      margin: 2rem auto;
+    }
   }
 }
 
 @media (min-width: 1200px) {
+  select {
+    width: 40%;
+  }
   h1 {
-    font-size: 6rem;
+    font-size: 5rem;
     width: 75%;
   }
   .card {
@@ -333,6 +385,10 @@ button.darkBlock {
     }
     .cardDescription {
       font-size: 1.5rem;
+    }
+
+    .downloadLabel {
+      font-size: 1.35rem;
     }
   }
 

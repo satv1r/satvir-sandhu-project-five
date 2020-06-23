@@ -10,6 +10,7 @@ const DownloadBlock = ({ platform, theme }) => {
     Web: "teal",
   };
   return (
+    // <div className={"downloadBlock"}>
     <div className={"downloadBlock " + theme}>
       <a href={platform[1]}>
         <p className={colors[platform[0]]}>{platform[0]}</p>

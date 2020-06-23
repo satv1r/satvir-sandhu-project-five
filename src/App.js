@@ -199,7 +199,13 @@ class App extends Component {
             <div className={buttonTheme} id="current"></div>
           </button>
           <h1>Browse cool apps made right here in Canada</h1>
-          <select name="filter" id="filter" onChange={this.filter}>
+          <h3>Filter By Platform</h3>
+          <select
+            name="filter"
+            id="filter"
+            onChange={this.filter}
+            className={this.state.theme}
+          >
             <option value="All">All</option>
             <option value="iOS">iOS</option>
             <option value="Android">Android</option>
@@ -208,6 +214,7 @@ class App extends Component {
             <option value="Linux">Linux</option>
             <option value="Web">Web</option>
           </select>
+
           <div className="cards">
             {appsToRender.map((app) => {
               return (
@@ -225,7 +232,7 @@ class App extends Component {
             <h2>Submit an App</h2>
 
             <label htmlFor="title" className="raise">
-              Title:
+              Title
             </label>
             <input
               type="text"
@@ -237,7 +244,7 @@ class App extends Component {
             />
 
             <label htmlFor="desc" className="raise">
-              Description:
+              Description
             </label>
             <textarea
               id="desc"
