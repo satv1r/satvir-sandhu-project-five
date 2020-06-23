@@ -1,6 +1,6 @@
 import React from "react";
 
-const DownloadBlock = ({ platform }) => {
+const DownloadBlock = ({ platform, theme }) => {
   let colors = {
     iOS: "blue",
     Android: "green",
@@ -10,7 +10,7 @@ const DownloadBlock = ({ platform }) => {
     Web: "teal",
   };
   return (
-    <div className="downloadBlock lightBlock">
+    <div className={"downloadBlock " + theme}>
       <a href={platform[1]}>
         <p className={colors[platform[0]]}>{platform[0]}</p>
       </a>

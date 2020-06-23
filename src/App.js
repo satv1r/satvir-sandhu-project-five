@@ -7,6 +7,8 @@ class App extends Component {
     super();
     this.state = {
       apps: [],
+      filter: "All",
+      theme: "darkBlock",
       submission: {
         title: "",
         desc: "",
@@ -38,34 +40,19 @@ class App extends Component {
     }
   }
 
-  switchTheme(element) {
-    const body = document.body;
-    const downloadBlocks = document.querySelectorAll(".downloadBlock");
-    const cards = document.querySelectorAll(".card");
-    const textInputs = document.querySelectorAll('input[type="text"]');
-    const submitButton = document.querySelector(".submit");
-    const textArea = document.querySelector("textarea");
-    const elements = [];
-    elements.push(...cards);
-    elements.push(body);
-    elements.push(...downloadBlocks);
-    elements.push(...textInputs);
-    elements.push(textArea);
-    elements.push(submitButton);
-
-    elements.forEach((element) => {
-      if (element.classList.contains("darkBlock")) {
-        element.classList.remove("darkBlock");
-        element.classList.add("lightBlock");
-      } else {
-        element.classList.remove("lightBlock");
-        element.classList.add("darkBlock");
-      }
-    });
-
-    // const
-    // body.style.backgroundColor = "black";
-  }
+  switchTheme = (element) => {
+    if (this.state.theme === "lightBlock") {
+      this.setState({
+        ...this.state,
+        theme: "darkBlock",
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        theme: "lightBlock",
+      });
+    }
+  };
 
   handleChange = (e) => {
     this.setState({
@@ -76,8 +63,16 @@ class App extends Component {
     });
   };
 
+  filter = (e) => {
+    this.setState({
+      ...this.state,
+      filter: e.target.value,
+    });
+  };
+
   handleSubmit = (e) => {
     e.preventDefault();
+
     const platformPairs = {
       iosUrl: "iOS",
       androidUrl: "Android",
@@ -103,7 +98,6 @@ class App extends Component {
     dbRef.push(submissionApp);
 
     this.setState({
-      ...this.state,
       submission: {
         title: "",
         desc: "",
@@ -125,7 +119,10 @@ class App extends Component {
     });
     const hiddenInputs = document.querySelectorAll('input[type="text"]');
     hiddenInputs.forEach((input) => {
-      input.style.display = "none";
+      if (input.id === "title") {
+      } else {
+        input.style.display = "none";
+      }
     });
   };
 
@@ -135,7 +132,6 @@ class App extends Component {
     dbRef.on("value", (response) => {
       const newState = [];
       const data = response.val();
-
       for (let key in data) {
         newState.push({
           title: data[key].title,
@@ -159,6 +155,21 @@ class App extends Component {
     const windowsUrl = document.getElementById("windowsUrl");
     const linuxUrl = document.getElementById("linuxUrl");
     const webUrl = document.getElementById("webUrl");
+    document.body.classList.value = this.state.theme;
+
+    let appsToRender = [];
+    this.state.apps.forEach((app) => {
+      if (this.state.filter === "All") {
+        appsToRender.push(app);
+      } else {
+        app.platforms.forEach((platform) => {
+          if (platform[0] === this.state.filter) {
+            appsToRender.push(app);
+          }
+        });
+      }
+    });
+
     return (
       <Fragment>
         <div className="wrapper">
@@ -175,17 +186,28 @@ class App extends Component {
             </div>
           </button>
           <h1>Browse cool apps made right here in Canada</h1>
-          {this.state.apps.map((app) => {
+          <select name="filter" id="filter" onChange={this.filter}>
+            <option value="All">All</option>
+            <option value="iOS">iOS</option>
+            <option value="Android">Android</option>
+            <option value="MacOS">MacOS</option>
+            <option value="Windows">Windows</option>
+            <option value="Linux">Linux</option>
+            <option value="Web">Web</option>
+          </select>
+
+          {appsToRender.map((app) => {
             return (
               <Card
                 title={app.title}
                 desc={app.desc}
                 platforms={app.platforms}
                 key={app.key}
+                theme={this.state.theme}
               />
             );
           })}
-          <form className="submissionForm">
+          <form className="submissionForm" onSubmit={this.handleSubmit}>
             <h2>Submit an App</h2>
 
             <label htmlFor="title" className="raise">
@@ -194,7 +216,7 @@ class App extends Component {
             <input
               type="text"
               id="title"
-              className="lightBlock"
+              className={this.state.theme}
               maxLength="22"
               required
               onChange={this.handleChange}
@@ -205,7 +227,7 @@ class App extends Component {
             </label>
             <textarea
               id="desc"
-              className="lightBlock"
+              className={this.state.theme}
               maxLength="100"
               required
               onChange={this.handleChange}
@@ -228,7 +250,7 @@ class App extends Component {
               <input
                 type="text"
                 id="iosUrl"
-                className="lightBlock"
+                className={this.state.theme}
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -250,7 +272,7 @@ class App extends Component {
               <input
                 type="text"
                 id="androidUrl"
-                className="lightBlock"
+                className={this.state.theme}
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -272,7 +294,7 @@ class App extends Component {
               <input
                 type="text"
                 id="macUrl"
-                className="lightBlock"
+                className={this.state.theme}
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -294,7 +316,7 @@ class App extends Component {
               <input
                 type="text"
                 id="windowsUrl"
-                className="lightBlock"
+                className={this.state.theme}
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -316,7 +338,7 @@ class App extends Component {
               <input
                 type="text"
                 id="linuxUrl"
-                className="lightBlock"
+                className={this.state.theme}
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
@@ -338,15 +360,13 @@ class App extends Component {
               <input
                 type="text"
                 id="webUrl"
-                className="lightBlock"
+                className={this.state.theme}
                 placeholder="Enter download URL"
                 onChange={this.handleChange}
               />
             </fieldset>
 
-            <button className="lightBlock submit" onClick={this.handleSubmit}>
-              Submit
-            </button>
+            <button className={this.state.theme + " submit"}>Submit</button>
           </form>
         </div>
       </Fragment>

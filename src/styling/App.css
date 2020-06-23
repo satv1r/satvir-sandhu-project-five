@@ -399,6 +399,7 @@ textarea {
 body {
   font-family: "Roboto", sans-serif;
   background-color: #eef0f3;
+  height: 100%;
 }
 
 .wrapper {
@@ -419,6 +420,12 @@ h1 {
 
 a {
   text-decoration: none;
+}
+
+select {
+  display: block;
+  margin: 1.25rem auto;
+  width: 80%;
 }
 
 .themeSwitcher {
