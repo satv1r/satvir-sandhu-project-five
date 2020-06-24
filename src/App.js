@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import firebase from "./firebase";
 import Card from "./Card";
+import Filter from "./Filter";
 
 class App extends Component {
   constructor() {
@@ -198,23 +199,8 @@ class App extends Component {
             <div className={buttonTheme} id="current"></div>
           </button>
           <h1>Browse cool apps made right here in Canada</h1>
-          <div className="filterGroup">
-            <label htmlFor="filter">Filter By Platform</label>
-            <select
-              name="filter"
-              id="filter"
-              onChange={this.filter}
-              className={this.state.theme}
-            >
-              <option value="All">All</option>
-              <option value="iOS">iOS</option>
-              <option value="Android">Android</option>
-              <option value="MacOS">MacOS</option>
-              <option value="Windows">Windows</option>
-              <option value="Linux">Linux</option>
-              <option value="Web">Web</option>
-            </select>
-          </div>
+
+          <Filter filter={this.filter} theme={this.state.theme} />
 
           <div className="cards">
             {appsToRender.map((app) => {
