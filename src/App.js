@@ -12,6 +12,7 @@ class App extends Component {
       apps: [],
       filter: "All",
       theme: "lightBlock",
+      submitted: "false",
       submission: {
         title: "",
         desc: "",
@@ -26,11 +27,12 @@ class App extends Component {
     };
   }
 
-  toggleElement(element) {
+  toggleElement = (element) => {
     if (element.style.display === "block") {
       element.style.display = "none";
       element.removeAttribute("required");
       element.value = "";
+      console.log(this);
       this.setState({
         submission: {
           ...this.state.submission,
@@ -41,7 +43,7 @@ class App extends Component {
       element.style.display = "block";
       element.setAttribute("required", "");
     }
-  }
+  };
 
   switchTheme = (element) => {
     if (this.state.theme === "lightBlock") {
@@ -111,6 +113,7 @@ class App extends Component {
         linuxUrl: "",
         webUrl: "",
       },
+      submitted: "true",
     });
 
     const textInputs = document.querySelectorAll("input");
@@ -185,11 +188,8 @@ class App extends Component {
             theme={this.state.theme}
             buttonTheme={buttonTheme}
           />
-
           <h1>Browse cool apps made right here in Canada</h1>
-
           <Filter filter={this.filter} theme={this.state.theme} />
-
           <div className="cards">
             {appsToRender.map((app) => {
               return (
@@ -206,9 +206,13 @@ class App extends Component {
 
           <SubmissionForm
             submit={this.handleSubmit}
+            submitted={this.state.submitted}
             change={this.handleChange}
             toggle={this.toggleElement}
             theme={this.state.theme}
+            title={this.state.submission.title}
+            desc={this.state.submission.desc}
+            key="form"
           />
         </div>
       </Fragment>

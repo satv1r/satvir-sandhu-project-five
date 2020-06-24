@@ -284,6 +284,11 @@ button.darkBlock {
     font-size: 1.25rem;
     font-weight: 700;
     width: 100%;
+
+    span {
+      font-weight: 300;
+      font-size: 80%;
+    }
   }
 
   .raise {
@@ -444,4 +449,12 @@ button.darkBlock {
       text-align: center;
     }
   }
+}
+
+.thanks {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
