@@ -676,6 +676,10 @@ button.darkBlock .dark {
   font-size: 80%;
 }
 
+.submissionForm label.sr-only {
+  width: 1px;
+}
+
 .submissionForm .raise {
   position: relative;
   z-index: 1;

@@ -291,6 +291,10 @@ button.darkBlock {
     }
   }
 
+  label.sr-only {
+    width: 1px;
+  }
+
   .raise {
     position: relative;
     z-index: 1;
