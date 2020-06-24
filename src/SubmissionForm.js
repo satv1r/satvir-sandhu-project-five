@@ -11,12 +11,9 @@ const SubmissionForm = ({
 }) => {
   const iosUrl = document.getElementById("iosUrl");
   const androidUrl = document.getElementById("androidUrl");
-  const macUrl = document.getElementById("macUrl");
-  const windowsUrl = document.getElementById("windowsUrl");
-  const linuxUrl = document.getElementById("linuxUrl");
   const webUrl = document.getElementById("webUrl");
   const titleLength = 20;
-  const descLength = 100;
+  const descLength = 140;
   if (submitted === "false") {
     return (
       <form className="submissionForm" onSubmit={submit}>
@@ -85,72 +82,6 @@ const SubmissionForm = ({
           <input
             type="text"
             id="androidUrl"
-            className={theme}
-            placeholder="Enter download URL"
-            onChange={change}
-          />
-        </fieldset>
-        <fieldset className="urls">
-          <input
-            type="checkbox"
-            id="mac"
-            onChange={() => {
-              toggle(macUrl);
-            }}
-          />
-          <label htmlFor="mac" className="raise">
-            MacOS
-          </label>
-          <label htmlFor="macUrl" className="sr-only">
-            Enter Download URL
-          </label>
-          <input
-            type="text"
-            id="macUrl"
-            className={theme}
-            placeholder="Enter download URL"
-            onChange={change}
-          />
-        </fieldset>
-        <fieldset className="urls">
-          <input
-            type="checkbox"
-            id="windows"
-            onChange={() => {
-              toggle(windowsUrl);
-            }}
-          />
-          <label htmlFor="windows" className="raise">
-            Windows
-          </label>
-          <label htmlFor="windowsUrl" className="sr-only">
-            Enter Download URL
-          </label>
-          <input
-            type="text"
-            id="windowsUrl"
-            className={theme}
-            placeholder="Enter download URL"
-            onChange={change}
-          />
-        </fieldset>
-        <fieldset className="urls">
-          <input
-            type="checkbox"
-            id="linux"
-            onChange={() => {
-              toggle(linuxUrl);
-            }}
-          />
-          <label htmlFor="linux" className="raise">
-            Linux
-          </label>
-          <label htmlFor="linuxUrl" className="sr-only">
-            Enter App Store URL
-          </label>
-          <input
-            type="text"
-            id="linuxUrl"
             className={theme}
             placeholder="Enter download URL"
             onChange={change}

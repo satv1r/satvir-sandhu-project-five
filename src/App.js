@@ -19,9 +19,6 @@ class App extends Component {
         platforms: [],
         iosUrl: "",
         androidUrl: "",
-        macUrl: "",
-        windowsUrl: "",
-        linuxUrl: "",
         webUrl: "",
       },
     };
@@ -80,9 +77,6 @@ class App extends Component {
     const platformPairs = {
       iosUrl: "iOS",
       androidUrl: "Android",
-      macUrl: "MacOS",
-      windowsUrl: "Windows",
-      linuxUrl: "Linux",
       webUrl: "Web",
     };
     const tempApp = this.state.submission;
@@ -108,9 +102,6 @@ class App extends Component {
         platforms: [],
         iosUrl: "",
         androidUrl: "",
-        macUrl: "",
-        windowsUrl: "",
-        linuxUrl: "",
         webUrl: "",
       },
       submitted: "true",
@@ -223,7 +214,7 @@ class App extends Component {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <i class="fab fa-github fa-2x"></i>
+                    <i className="fab fa-github fa-2x"></i>
                   </a>
                 </li>
                 <li>
@@ -232,7 +223,7 @@ class App extends Component {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <i class="fab fa-codepen fa-2x"></i>
+                    <i className="fab fa-codepen fa-2x"></i>
                   </a>
                 </li>
                 <li>
@@ -241,7 +232,7 @@ class App extends Component {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <i class="fab fa-behance fa-2x"></i>
+                    <i className="fab fa-behance fa-2x"></i>
                   </a>
                 </li>
                 <li>
@@ -250,7 +241,7 @@ class App extends Component {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <i class="fab fa-twitter fa-2x"></i>
+                    <i className="fab fa-twitter fa-2x"></i>
                   </a>
                 </li>
               </ul>

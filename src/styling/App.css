@@ -355,42 +355,54 @@ textarea {
 
 .blue {
   color: #1170ff;
+  border: 3px solid #1170ff;
+  border-radius: 20px;
 }
 
 .green {
   color: #27b30b;
+  border: 3px solid #27b30b;
+  border-radius: 20px;
 }
 
 .pink {
   color: #cc0465;
+  border: 3px solid #cc0465;
+  border-radius: 20px;
 }
 
 .purple {
   color: #b700ba;
+  border: 3px solid #b700ba;
+  border-radius: 20px;
 }
 
 .red {
   color: #d10034;
+  border: 3px solid #d10034;
+  border-radius: 20px;
 }
 
 .teal {
   color: #00a0a8;
+  border: 3px solid #00a0a8;
+  border-radius: 20px;
 }
 
 .lightBlock {
   border-radius: 20px;
   color: #1f1b24;
   background-color: #eef0f3;
-  -webkit-box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
-          box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
+  -webkit-box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
+          box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
 }
 
 .darkBlock {
   background-color: #1f1b24;
   border-radius: 20px;
   color: #eef0f3;
-  -webkit-box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
-          box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
+  -webkit-box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
+          box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
 }
 
 .darkBody {
@@ -597,60 +609,57 @@ button.darkBlock .dark {
   width: 100%;
   padding: 0 2rem;
   margin: 0 auto;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.card .cardWrapper .action,
+.card .cardWrapper .info {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 
 .card .cardTitle {
   font-size: 1.25rem;
   font-weight: 900;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
 }
 
-.card .cardDescription {
+.card s .cardDescription {
   padding-top: 1rem;
   font-size: 1.125rem;
   font-weight: 300;
 }
 
 .card .downloadLabel {
-  padding-top: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
   font-size: 1.125rem;
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .downloadBlocks {
-  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0;
-  padding-top: 0.5rem;
+  margin-top: 0.5rem;
   margin-left: -0.75rem;
 }
 
 .downloadBlocks .downloadBlock {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  position: relative;
-  margin: 0.75rem 0.75rem;
-}
-
-.downloadBlocks .downloadBlock p {
-  font-size: 1.125rem;
-  font-weight: 700;
-  line-height: 130%;
-  padding: 0.25rem 1rem;
-  z-index: 1;
+  margin: 0rem 0.75rem;
+  font-size: 2rem;
 }
 
 .submissionForm h2 {
@@ -790,6 +799,7 @@ button.darkBlock .dark {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 
 @media (min-width: 375px) {
@@ -833,7 +843,7 @@ button.darkBlock .dark {
     font-size: 1.35rem;
   }
   .card .downloadLabel {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
   }
   .bottom .profile {
     display: block;
@@ -845,6 +855,9 @@ button.darkBlock .dark {
   .submissionForm button {
     width: 50%;
     margin: 2rem auto;
+  }
+  .downloadBlocks .downloadBlock {
+    font-size: 2.5rem;
   }
 }
 
@@ -866,7 +879,7 @@ button.darkBlock .dark {
     font-size: 1.5rem;
   }
   .card .downloadLabel {
-    font-size: 1.35rem;
+    font-size: 1.45rem;
   }
   .card:nth-child(3n + 2) {
     margin-left: 5%;

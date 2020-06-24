@@ -13,35 +13,49 @@ $teal: #00a0a8;
 
 .blue {
   color: $blue;
+  border: 3px solid $blue;
+  border-radius: 20px;
 }
 .green {
   color: $green;
+  border: 3px solid $green;
+  border-radius: 20px;
 }
 .pink {
   color: $pink;
+  border: 3px solid $pink;
+  border-radius: 20px;
 }
 .purple {
   color: $purple;
+  border: 3px solid $purple;
+  border-radius: 20px;
 }
 .red {
   color: $red;
+  border: 3px solid $red;
+  border-radius: 20px;
 }
 .teal {
   color: $teal;
+  border: 3px solid $teal;
+  border-radius: 20px;
 }
 
 .lightBlock {
   border-radius: 20px;
   color: $dark;
   background-color: $light;
-  box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
+  // box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
+  box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
 }
 
 .darkBlock {
   background-color: $dark;
   border-radius: 20px;
   color: $light;
-  box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
+  // box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
+  box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
 }
 
 .darkBody {
@@ -217,55 +231,46 @@ button.darkBlock {
     width: 100%;
     padding: 0 2rem;
     margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .action,
+    .info {
+      height: fit-content;
+    }
   }
 
   .cardTitle {
     font-size: 1.25rem;
     font-weight: 900;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
   }
-
-  .cardDescription {
+  s .cardDescription {
     padding-top: 1rem;
     font-size: 1.125rem;
     font-weight: 300;
   }
 
   .downloadLabel {
-    padding-top: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
     font-size: 1.125rem;
-    font-weight: 900;
+    font-weight: 700;
   }
 }
 
 .downloadBlocks {
-  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding-top: 0.5rem;
+  margin-top: 0.5rem;
   margin-left: -0.75rem;
   .downloadBlock {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    position: relative;
-    margin: 0.75rem 0.75rem;
-
-    p {
-      font-size: 1.125rem;
-      font-weight: 700;
-      line-height: 130%;
-      padding: 0.25rem 1rem;
-      z-index: 1;
-    }
+    margin: 0rem 0.75rem;
+    font-size: 2rem;
   }
 }
-
-// .downloadBlock.lightBlock {
-//   background-color: $blue;
-//   box-shadow: none;
-// }
 
 .submissionForm {
   h2 {
@@ -394,6 +399,7 @@ button.darkBlock {
   text-align: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 
 @media (min-width: 375px) {
@@ -437,7 +443,7 @@ button.darkBlock {
     }
 
     .downloadLabel {
-      font-size: 1.25rem;
+      font-size: 1.45rem;
     }
   }
 
@@ -454,6 +460,12 @@ button.darkBlock {
     button {
       width: 50%;
       margin: 2rem auto;
+    }
+  }
+
+  .downloadBlocks {
+    .downloadBlock {
+      font-size: 2.5rem;
     }
   }
 }
@@ -476,7 +488,7 @@ button.darkBlock {
     }
 
     .downloadLabel {
-      font-size: 1.35rem;
+      font-size: 1.45rem;
     }
   }
 

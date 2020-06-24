@@ -8,9 +8,6 @@ const Filter = ({ filter, theme }) => {
         <option value="All">All</option>
         <option value="iOS">iOS</option>
         <option value="Android">Android</option>
-        <option value="MacOS">MacOS</option>
-        <option value="Windows">Windows</option>
-        <option value="Linux">Linux</option>
         <option value="Web">Web</option>
       </select>
     </div>
