@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import firebase from "./firebase";
 import Card from "./Card";
 import Filter from "./Filter";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 class App extends Component {
   constructor() {
@@ -185,19 +186,12 @@ class App extends Component {
     return (
       <Fragment>
         <div className="wrapper">
-          <button
-            onClick={this.switchTheme}
-            className={"themeSwitcher " + this.state.theme}
-            id="themeSwitcher"
-          >
-            <div className="light">
-              <i className="fas fa-sun fa-2x"></i>
-            </div>
-            <div className="dark">
-              <i className="fas fa-moon fa-2x"></i>
-            </div>
-            <div className={buttonTheme} id="current"></div>
-          </button>
+          <ThemeSwitcher
+            switchTheme={this.switchTheme}
+            theme={this.state.theme}
+            buttonTheme={buttonTheme}
+          />
+
           <h1>Browse cool apps made right here in Canada</h1>
 
           <Filter filter={this.filter} theme={this.state.theme} />
