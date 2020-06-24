@@ -3,7 +3,7 @@ import DownloadBlock from "./DownloadBlock";
 
 const Card = ({ title, desc, platforms, theme }) => {
   return (
-    <article className={"card " + theme}>
+    <article className={"card " + theme} tabIndex="0">
       <div className="cardWrapper">
         <h2 className="cardTitle">{title}</h2>
         <p className="cardDescription">{desc}</p>

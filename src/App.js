@@ -1,6 +1,9 @@
 import React, { Component, Fragment } from "react";
 import firebase from "./firebase";
 import Card from "./Card";
+import Filter from "./Filter";
+import ThemeSwitcher from "./ThemeSwitcher";
+import SubmissionForm from "./SubmissionForm";
 
 class App extends Component {
   constructor() {
@@ -9,6 +12,7 @@ class App extends Component {
       apps: [],
       filter: "All",
       theme: "lightBlock",
+      submitted: "false",
       submission: {
         title: "",
         desc: "",
@@ -23,11 +27,12 @@ class App extends Component {
     };
   }
 
-  toggleElement(element) {
+  toggleElement = (element) => {
     if (element.style.display === "block") {
       element.style.display = "none";
       element.removeAttribute("required");
       element.value = "";
+      console.log(this);
       this.setState({
         submission: {
           ...this.state.submission,
@@ -38,7 +43,7 @@ class App extends Component {
       element.style.display = "block";
       element.setAttribute("required", "");
     }
-  }
+  };
 
   switchTheme = (element) => {
     if (this.state.theme === "lightBlock") {
@@ -108,6 +113,7 @@ class App extends Component {
         linuxUrl: "",
         webUrl: "",
       },
+      submitted: "true",
     });
 
     const textInputs = document.querySelectorAll("input");
@@ -148,13 +154,6 @@ class App extends Component {
   }
 
   render() {
-    const iosUrl = document.getElementById("iosUrl");
-    const androidUrl = document.getElementById("androidUrl");
-    const macUrl = document.getElementById("macUrl");
-    const windowsUrl = document.getElementById("windowsUrl");
-    const linuxUrl = document.getElementById("linuxUrl");
-    const webUrl = document.getElementById("webUrl");
-
     if (this.state.theme === "darkBlock") {
       document.body.classList.value = "darkBody";
     } else {
@@ -184,38 +183,13 @@ class App extends Component {
     return (
       <Fragment>
         <div className="wrapper">
-          <button
-            onClick={this.switchTheme}
-            className={"themeSwitcher " + this.state.theme}
-            id="themeSwitcher"
-          >
-            <div className="light">
-              <i className="fas fa-sun fa-2x"></i>
-            </div>
-            <div className="dark">
-              <i className="fas fa-moon fa-2x"></i>
-            </div>
-            <div className={buttonTheme} id="current"></div>
-          </button>
+          <ThemeSwitcher
+            switchTheme={this.switchTheme}
+            theme={this.state.theme}
+            buttonTheme={buttonTheme}
+          />
           <h1>Browse cool apps made right here in Canada</h1>
-          <div className="filterGroup">
-            <label htmlFor="filter">Filter By Platform</label>
-            <select
-              name="filter"
-              id="filter"
-              onChange={this.filter}
-              className={this.state.theme}
-            >
-              <option value="All">All</option>
-              <option value="iOS">iOS</option>
-              <option value="Android">Android</option>
-              <option value="MacOS">MacOS</option>
-              <option value="Windows">Windows</option>
-              <option value="Linux">Linux</option>
-              <option value="Web">Web</option>
-            </select>
-          </div>
-
+          <Filter filter={this.filter} theme={this.state.theme} />
           <div className="cards">
             {appsToRender.map((app) => {
               return (
@@ -229,169 +203,17 @@ class App extends Component {
               );
             })}
           </div>
-          <form className="submissionForm" onSubmit={this.handleSubmit}>
-            <h2>Submit an App</h2>
 
-            <label htmlFor="title" className="raise">
-              Title
-            </label>
-            <input
-              type="text"
-              id="title"
-              className={this.state.theme}
-              maxLength="20"
-              required
-              onChange={this.handleChange}
-            />
-
-            <label htmlFor="desc" className="raise">
-              Description
-            </label>
-            <textarea
-              id="desc"
-              className={this.state.theme}
-              maxLength="100"
-              required
-              onChange={this.handleChange}
-            ></textarea>
-
-            <fieldset className="urls">
-              <input
-                type="checkbox"
-                id="ios"
-                onChange={() => {
-                  this.toggleElement(iosUrl);
-                }}
-              />
-              <label htmlFor="ios" className="raise">
-                iOS
-              </label>
-              <label htmlFor="iosUrl" className="sr-only">
-                Enter App Store URL
-              </label>
-              <input
-                type="text"
-                id="iosUrl"
-                className={this.state.theme}
-                placeholder="Enter download URL"
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <fieldset className="urls">
-              <input
-                type="checkbox"
-                id="android"
-                onChange={() => {
-                  this.toggleElement(androidUrl);
-                }}
-              />
-              <label htmlFor="android" className="raise">
-                Android
-              </label>
-              <label htmlFor="androidUrl" className="sr-only">
-                Enter Google Play Store URL
-              </label>
-              <input
-                type="text"
-                id="androidUrl"
-                className={this.state.theme}
-                placeholder="Enter download URL"
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <fieldset className="urls">
-              <input
-                type="checkbox"
-                id="mac"
-                onChange={() => {
-                  this.toggleElement(macUrl);
-                }}
-              />
-              <label htmlFor="mac" className="raise">
-                MacOS
-              </label>
-              <label htmlFor="macUrl" className="sr-only">
-                Enter Download URL
-              </label>
-              <input
-                type="text"
-                id="macUrl"
-                className={this.state.theme}
-                placeholder="Enter download URL"
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <fieldset className="urls">
-              <input
-                type="checkbox"
-                id="windows"
-                onChange={() => {
-                  this.toggleElement(windowsUrl);
-                }}
-              />
-              <label htmlFor="windows" className="raise">
-                Windows
-              </label>
-              <label htmlFor="windowsUrl" className="sr-only">
-                Enter Download URL
-              </label>
-              <input
-                type="text"
-                id="windowsUrl"
-                className={this.state.theme}
-                placeholder="Enter download URL"
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <fieldset className="urls">
-              <input
-                type="checkbox"
-                id="linux"
-                onChange={() => {
-                  this.toggleElement(linuxUrl);
-                }}
-              />
-              <label htmlFor="linux" className="raise">
-                Linux
-              </label>
-              <label htmlFor="linuxUrl" className="sr-only">
-                Enter App Store URL
-              </label>
-              <input
-                type="text"
-                id="linuxUrl"
-                className={this.state.theme}
-                placeholder="Enter download URL"
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <fieldset className="urls">
-              <input
-                type="checkbox"
-                id="web"
-                onChange={() => {
-                  this.toggleElement(webUrl);
-                }}
-              />
-              <label htmlFor="web" className="raise">
-                Web
-              </label>
-              <label htmlFor="webUrl" className="sr-only">
-                Enter URL
-              </label>
-              <input
-                type="text"
-                id="webUrl"
-                className={this.state.theme}
-                placeholder="Enter download URL"
-                onChange={this.handleChange}
-              />
-            </fieldset>
-
-            <button type="submit" className={this.state.theme + " submit"}>
-              Submit
-            </button>
-          </form>
+          <SubmissionForm
+            submit={this.handleSubmit}
+            submitted={this.state.submitted}
+            change={this.handleChange}
+            toggle={this.toggleElement}
+            theme={this.state.theme}
+            title={this.state.submission.title}
+            desc={this.state.submission.desc}
+            key="form"
+          />
         </div>
       </Fragment>
     );

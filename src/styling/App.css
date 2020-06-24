@@ -671,6 +671,11 @@ button.darkBlock .dark {
   width: 100%;
 }
 
+.submissionForm label span {
+  font-weight: 300;
+  font-size: 80%;
+}
+
 .submissionForm .raise {
   position: relative;
   z-index: 1;
@@ -827,4 +832,12 @@ button.darkBlock .dark {
   form label {
     text-align: center;
   }
+}
+
+.thanks {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
