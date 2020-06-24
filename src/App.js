@@ -203,17 +203,59 @@ class App extends Component {
               );
             })}
           </div>
-
-          <SubmissionForm
-            submit={this.handleSubmit}
-            submitted={this.state.submitted}
-            change={this.handleChange}
-            toggle={this.toggleElement}
-            theme={this.state.theme}
-            title={this.state.submission.title}
-            desc={this.state.submission.desc}
-            key="form"
-          />
+          <div className="bottom">
+            <SubmissionForm
+              submit={this.handleSubmit}
+              submitted={this.state.submitted}
+              change={this.handleChange}
+              toggle={this.toggleElement}
+              theme={this.state.theme}
+              title={this.state.submission.title}
+              desc={this.state.submission.desc}
+              key="form"
+            />
+            <div className="profile">
+              <h2>Designed and Built by Satvir Sandhu</h2>
+              <ul className="links">
+                <li>
+                  <a
+                    href="https://github.com/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-github fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://codepen.io/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-codepen fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.behance.net/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-behance fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fab fa-twitter fa-2x"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </Fragment>
     );

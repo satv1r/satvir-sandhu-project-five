@@ -427,6 +427,7 @@ h1 {
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 .filterGroup {
@@ -652,14 +653,9 @@ button.darkBlock .dark {
   z-index: 1;
 }
 
-.submissionForm {
-  margin: 0 auto;
-}
-
 .submissionForm h2 {
   font-size: 2rem;
   font-weight: 900;
-  margin-top: 4rem;
   margin-bottom: 2rem;
   position: relative;
   z-index: 1;
@@ -746,6 +742,56 @@ button.darkBlock .dark {
   margin-bottom: 2rem;
 }
 
+.bottom {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.bottom .profile {
+  display: none;
+}
+
+.bottom .profile h2 {
+  font-size: 3.25rem;
+  font-weight: 900;
+  margin-bottom: 2rem;
+}
+
+.bottom .links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.bottom .links li {
+  padding-right: 1rem;
+}
+
+.bottom .links li:hover {
+  color: purple;
+}
+
+.thanks {
+  font-size: 2rem;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
 @media (min-width: 375px) {
   h1 {
     font-size: 2.75rem;
@@ -789,9 +835,12 @@ button.darkBlock .dark {
   .card .downloadLabel {
     font-size: 1.25rem;
   }
+  .bottom .profile {
+    display: block;
+    width: 40%;
+  }
   .submissionForm {
-    width: 50%;
-    margin: 0 auto;
+    width: 45%;
   }
   .submissionForm button {
     width: 50%;
@@ -830,18 +879,12 @@ button.darkBlock .dark {
   }
   form {
     width: 30%;
-    margin: 0 auto;
   }
   form h2,
   form label {
     text-align: center;
   }
-}
-
-.thanks {
-  font-size: 2rem;
-  font-weight: 900;
-  text-align: center;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  .bottom .profile h2 {
+    font-size: 5rem;
+  }
 }
