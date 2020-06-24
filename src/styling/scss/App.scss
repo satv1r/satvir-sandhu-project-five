@@ -105,6 +105,14 @@ a {
     padding: 0 2rem;
     text-align: center;
     font-weight: 700;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: 3px solid gray;
+    }
   }
 
   select.lightBlock {

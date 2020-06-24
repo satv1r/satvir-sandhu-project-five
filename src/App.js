@@ -72,7 +72,6 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submitting");
     const platformPairs = {
       iosUrl: "iOS",
       androidUrl: "Android",
