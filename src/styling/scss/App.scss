@@ -8,6 +8,8 @@ $red: #d10034;
 
 .red {
   color: $red;
+  border: 1px solid $red;
+  width: fit-content;
 }
 
 .lightBlock {

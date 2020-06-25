@@ -355,6 +355,10 @@ textarea {
 
 .red {
   color: #d10034;
+  border: 1px solid #d10034;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .lightBlock {
