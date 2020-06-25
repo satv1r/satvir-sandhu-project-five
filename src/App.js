@@ -29,7 +29,6 @@ class App extends Component {
       element.style.display = "none";
       element.removeAttribute("required");
       element.value = "";
-      console.log(this);
       this.setState({
         submission: {
           ...this.state.submission,
@@ -74,6 +73,17 @@ class App extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    const platformRequired = document.getElementById("platformRequired");
+    platformRequired.classList.remove("red");
+    const boxes = document.querySelectorAll("input[type='checkbox']:checked");
+    if (boxes.length === 0) {
+      platformRequired.classList.add("red");
+      setTimeout(() => {
+        platformRequired.classList.remove("red");
+      }, 3000);
+
+      return false;
+    }
     const platformPairs = {
       iosUrl: "iOS",
       androidUrl: "Android",

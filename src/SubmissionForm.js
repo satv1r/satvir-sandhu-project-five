@@ -42,7 +42,7 @@ const SubmissionForm = ({
           required
           onChange={change}
         ></textarea>
-
+        <h3 id="platformRequired">Atleast 1 Platform is Required</h3>
         <fieldset className="urls">
           <input
             type="checkbox"
@@ -55,14 +55,15 @@ const SubmissionForm = ({
             iOS
           </label>
           <label htmlFor="iosUrl" className="sr-only">
-            Enter App Store URL
+            Enter App Store URL (with HTTP in url)
           </label>
           <input
             type="text"
             id="iosUrl"
             className={theme}
-            placeholder="Enter download URL"
+            placeholder="https://www.apple.com/ca/ios/app-store/"
             onChange={change}
+            pattern="https://.*"
           />
         </fieldset>
         <fieldset className="urls">
@@ -83,7 +84,7 @@ const SubmissionForm = ({
             type="text"
             id="androidUrl"
             className={theme}
-            placeholder="Enter download URL"
+            placeholder="https://play.google.com/store/apps/"
             onChange={change}
           />
         </fieldset>
@@ -105,7 +106,7 @@ const SubmissionForm = ({
             type="text"
             id="webUrl"
             className={theme}
-            placeholder="Enter download URL"
+            placeholder="https://www.reddit.com/"
             onChange={change}
           />
         </fieldset>

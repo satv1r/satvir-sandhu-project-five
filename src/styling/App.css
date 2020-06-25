@@ -353,56 +353,24 @@ textarea {
   overflow: hidden;
 }
 
-.blue {
-  color: #1170ff;
-  border: 3px solid #1170ff;
-  border-radius: 20px;
-}
-
-.green {
-  color: #27b30b;
-  border: 3px solid #27b30b;
-  border-radius: 20px;
-}
-
-.pink {
-  color: #cc0465;
-  border: 3px solid #cc0465;
-  border-radius: 20px;
-}
-
-.purple {
-  color: #b700ba;
-  border: 3px solid #b700ba;
-  border-radius: 20px;
-}
-
 .red {
   color: #d10034;
-  border: 3px solid #d10034;
-  border-radius: 20px;
-}
-
-.teal {
-  color: #00a0a8;
-  border: 3px solid #00a0a8;
-  border-radius: 20px;
 }
 
 .lightBlock {
   border-radius: 20px;
   color: #1f1b24;
   background-color: #eef0f3;
-  -webkit-box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
-          box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
+  -webkit-box-shadow: 5px 5px 10px #c1c2c5, -5px -5px 10px #ffffff;
+          box-shadow: 5px 5px 10px #c1c2c5, -5px -5px 10px #ffffff;
 }
 
 .darkBlock {
   background-color: #1f1b24;
   border-radius: 20px;
   color: #eef0f3;
-  -webkit-box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
-          box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
+  -webkit-box-shadow: 5px 5px 10px #18151c, -5px -5px 10px #26212c;
+          box-shadow: 5px 5px 10px #18151c, -5px -5px 10px #26212c;
 }
 
 .darkBody {
@@ -662,6 +630,12 @@ button.darkBlock .dark {
   font-size: 2rem;
 }
 
+.submissionForm h3 {
+  font-size: 1.25rem;
+  font-weight: 300;
+  text-align: left;
+}
+
 .submissionForm h2 {
   font-size: 2rem;
   font-weight: 900;
@@ -704,6 +678,11 @@ button.darkBlock .dark {
   padding: 1rem;
 }
 
+.submissionForm fieldset input[type="text"] {
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+}
+
 .submissionForm textarea {
   height: 8rem;
   font-family: "Roboto", sans-serif;
@@ -744,6 +723,22 @@ button.darkBlock .dark {
 
 .submissionForm .urls input[type="text"] {
   display: none;
+}
+
+.submissionForm input.lightBlock,
+.submissionForm textarea.lightBlock {
+  background: #1f1b24;
+  color: #eef0f3;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.submissionForm input.darkBlock,
+.submissionForm textarea.darkBlock {
+  background: #eef0f3;
+  color: #1f1b24;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 .submissionForm button {

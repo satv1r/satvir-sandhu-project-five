@@ -4,42 +4,10 @@
 $light: #eef0f3;
 $dark: #1f1b24;
 
-$blue: #1170ff;
-$green: #27b30b;
-$pink: #cc0465;
-$purple: #b700ba;
 $red: #d10034;
-$teal: #00a0a8;
 
-.blue {
-  color: $blue;
-  border: 3px solid $blue;
-  border-radius: 20px;
-}
-.green {
-  color: $green;
-  border: 3px solid $green;
-  border-radius: 20px;
-}
-.pink {
-  color: $pink;
-  border: 3px solid $pink;
-  border-radius: 20px;
-}
-.purple {
-  color: $purple;
-  border: 3px solid $purple;
-  border-radius: 20px;
-}
 .red {
   color: $red;
-  border: 3px solid $red;
-  border-radius: 20px;
-}
-.teal {
-  color: $teal;
-  border: 3px solid $teal;
-  border-radius: 20px;
 }
 
 .lightBlock {
@@ -47,7 +15,8 @@ $teal: #00a0a8;
   color: $dark;
   background-color: $light;
   // box-shadow: 17px 17px 34px #dddfe2, -17px -17px 34px #ffffff;
-  box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
+  // box-shadow: 5px 5px 10px #e4e6e9, -5px -5px 10px #f8fafd;
+  box-shadow: 5px 5px 10px #c1c2c5, -5px -5px 10px #ffffff;
 }
 
 .darkBlock {
@@ -55,7 +24,8 @@ $teal: #00a0a8;
   border-radius: 20px;
   color: $light;
   // box-shadow: 7px 7px 14px #1b171f, -7px -7px 14px #231f29;
-  box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
+  // box-shadow: 5px 5px 10px #1e1a23, -5px -5px 10px #201c25;
+  box-shadow: 5px 5px 10px #18151c, -5px -5px 10px #26212c;
 }
 
 .darkBody {
@@ -273,6 +243,11 @@ button.darkBlock {
 }
 
 .submissionForm {
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 300;
+    text-align: left;
+  }
   h2 {
     font-size: 2rem;
     font-weight: 900;
@@ -319,6 +294,13 @@ button.darkBlock {
     padding: 1rem;
   }
 
+  fieldset {
+    input[type="text"] {
+      margin-top: 1rem;
+      margin-bottom: 0rem;
+    }
+  }
+
   textarea {
     height: 8rem;
     font-family: "Roboto", sans-serif;
@@ -355,6 +337,19 @@ button.darkBlock {
     input[type="text"] {
       display: none;
     }
+  }
+
+  input.lightBlock,
+  textarea.lightBlock {
+    background: $dark;
+    color: $light;
+    box-shadow: none;
+  }
+  input.darkBlock,
+  textarea.darkBlock {
+    background: $light;
+    color: $dark;
+    box-shadow: none;
   }
 
   button {
