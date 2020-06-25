@@ -3,10 +3,7 @@ import React from "react";
 const DownloadBlock = ({ platform, theme }) => {
   let colors = {
     iOS: "fab fa-apple",
-    Android: "fab fa-google",
-    MacOS: "fas fa-laptop",
-    Windows: "fab fa-windows",
-    Linux: "fab fa-linux",
+    Android: "fab fa-google-play",
     Web: "fas fa-globe-americas",
   };
   return (
