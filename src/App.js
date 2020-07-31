@@ -24,6 +24,7 @@ class App extends Component {
     };
   }
 
+  // Toggle display of an element (none / block)
   toggleElement = (element) => {
     if (element.style.display === "block") {
       element.style.display = "none";
