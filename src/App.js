@@ -1,40 +1,33 @@
-import React, { Component, Fragment } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import firebase from "./firebase";
 import Card from "./Card";
 import Filter from "./Filter";
 import ThemeSwitcher from "./ThemeSwitcher";
 import SubmissionForm from "./SubmissionForm";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      apps: [],
-      filter: "All",
-      theme: "lightBlock",
-      submitted: "false",
-      submission: {
-        title: "",
-        desc: "",
-        platforms: [],
-        iosUrl: "",
-        androidUrl: "",
-        webUrl: "",
-      },
-    };
-  }
+const App = () => {
+  const [apps, setApps] = useState([]);
+  const [appFilter, setAppFilter] = useState("All");
+  const [theme, setTheme] = useState("lightBlock");
+  const [submitted, setSubmitted] = useState("false");
+  const [submission, setSubmission] = useState({
+    title: "",
+    desc: "",
+    platforms: [],
+    iosUrl: "",
+    androidUrl: "",
+    webUrl: "",
+  });
 
   // Toggle display of an element (none / block)
-  toggleElement = (element) => {
+  const toggleElement = (element) => {
     if (element.style.display === "block") {
       element.style.display = "none";
       element.removeAttribute("required");
       element.value = "";
-      this.setState({
-        submission: {
-          ...this.state.submission,
-          [element.id]: element.value,
-        },
+      setSubmission({
+        ...submission,
+        [element.id]: element.value,
       });
     } else {
       element.style.display = "block";
@@ -43,36 +36,24 @@ class App extends Component {
   };
 
   // Switch theme in state
-  switchTheme = () => {
-    if (this.state.theme === "lightBlock") {
-      this.setState({
-        theme: "darkBlock",
-      });
-    } else {
-      this.setState({
-        theme: "lightBlock",
-      });
-    }
+  const switchTheme = () => {
+    theme === "lightBlock" ? setTheme("darkBlock") : setTheme("lightBlock");
   };
 
   // Store any changes in state, for a given input
-  handleChange = (e) => {
-    this.setState({
-      submission: {
-        ...this.state.submission,
-        [e.target.id]: e.target.value,
-      },
+  const handleChange = (e) => {
+    setSubmission({
+      ...submission,
+      [e.target.id]: e.target.value,
     });
   };
 
   // Set filter in state for given input
-  filter = (e) => {
-    this.setState({
-      filter: e.target.value,
-    });
+  const filter = (e) => {
+    setAppFilter(e.target.value);
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const platformRequired = document.getElementById("platformRequired");
     platformRequired.classList.remove("red");
@@ -90,7 +71,7 @@ class App extends Component {
       androidUrl: "Android",
       webUrl: "Web",
     };
-    const tempApp = this.state.submission;
+    const tempApp = submission;
     const submissionApp = {
       platforms: [],
     };
@@ -106,17 +87,16 @@ class App extends Component {
     const dbRef = firebase.database().ref();
     dbRef.push(submissionApp);
 
-    this.setState({
-      submission: {
-        title: "",
-        desc: "",
-        platforms: [],
-        iosUrl: "",
-        androidUrl: "",
-        webUrl: "",
-      },
-      submitted: "true",
+    setSubmission({
+      title: "",
+      desc: "",
+      platforms: [],
+      iosUrl: "",
+      androidUrl: "",
+      webUrl: "",
     });
+
+    setSubmitted("true");
 
     const textInputs = document.querySelectorAll("input");
     document.querySelector("textarea").value = "";
@@ -133,13 +113,13 @@ class App extends Component {
     });
   };
 
-  componentDidMount() {
+  useEffect(() => {
     // create a variable to store a reference to our database
     const dbRef = firebase.database().ref();
 
     // Set an event listener to update local reference if firebase gets updated, also runs once
     dbRef.on("value", (response) => {
-      const newState = [];
+      let newState = [];
       const data = response.val();
       for (let key in data) {
         newState.push({
@@ -149,112 +129,103 @@ class App extends Component {
           key: key,
         });
       }
+      setApps(newState);
+    });
+  }, []);
 
-      this.setState({
-        ...this.state,
-        apps: newState,
+  // Set body theme based on state theme
+  theme === "darkBlock"
+    ? (document.body.classList.value = "darkBody")
+    : (document.body.classList.value = "lightBody");
+
+  let appsToRender = [];
+  apps.forEach((app) => {
+    if (appFilter === "All") {
+      appsToRender.push(app);
+    } else {
+      app.platforms.forEach((platform) => {
+        if (platform[0] === appFilter) {
+          appsToRender.push(app);
+        }
       });
-    });
-  }
+    }
+  });
 
-  render() {
-    // Set body theme based on state theme
-    this.state.theme === "darkBlock"
-      ? (document.body.classList.value = "darkBody")
-      : (document.body.classList.value = "lightBody");
-
-    let appsToRender = [];
-    this.state.apps.forEach((app) => {
-      if (this.state.filter === "All") {
-        appsToRender.push(app);
-      } else {
-        app.platforms.forEach((platform) => {
-          if (platform[0] === this.state.filter) {
-            appsToRender.push(app);
-          }
-        });
-      }
-    });
-
-    return (
-      <Fragment>
-        <div className="wrapper">
-          <ThemeSwitcher
-            switchTheme={this.switchTheme}
-            theme={this.state.theme}
+  return (
+    <Fragment>
+      <div className="wrapper">
+        <ThemeSwitcher switchTheme={switchTheme} theme={theme} />
+        <h1>Browse cool apps made right here in Canada</h1>
+        <Filter filter={filter} theme={theme} />
+        <div className="cards">
+          {appsToRender.map((app) => {
+            return (
+              <Card
+                title={app.title}
+                desc={app.desc}
+                platforms={app.platforms}
+                key={app.key}
+                theme={theme}
+              />
+            );
+          })}
+        </div>
+        <div className="bottom">
+          <SubmissionForm
+            submit={handleSubmit}
+            submitted={submitted}
+            change={handleChange}
+            toggle={toggleElement}
+            theme={theme}
+            title={submission.title}
+            desc={submission.desc}
+            key="form"
           />
-          <h1>Browse cool apps made right here in Canada</h1>
-          <Filter filter={this.filter} theme={this.state.theme} />
-          <div className="cards">
-            {appsToRender.map((app) => {
-              return (
-                <Card
-                  title={app.title}
-                  desc={app.desc}
-                  platforms={app.platforms}
-                  key={app.key}
-                  theme={this.state.theme}
-                />
-              );
-            })}
-          </div>
-          <div className="bottom">
-            <SubmissionForm
-              submit={this.handleSubmit}
-              submitted={this.state.submitted}
-              change={this.handleChange}
-              toggle={this.toggleElement}
-              theme={this.state.theme}
-              title={this.state.submission.title}
-              desc={this.state.submission.desc}
-              key="form"
-            />
-            <div className="profile">
-              <h2>Designed and Built by Satvir Sandhu</h2>
-              <ul className="links">
-                <li>
-                  <a
-                    href="https://github.com/satv1r"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-github fa-2x"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://codepen.io/satv1r"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-codepen fa-2x"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://www.behance.net/satv1r"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-behance fa-2x"></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://twitter.com/satv1r"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-twitter fa-2x"></i>
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div className="profile">
+            <h2>Designed and Built by Satvir Sandhu</h2>
+            <ul className="links">
+              <li>
+                <a
+                  href="https://github.com/satv1r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-github fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://codepen.io/satv1r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-codepen fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.behance.net/satv1r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-behance fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://twitter.com/satv1r"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-twitter fa-2x"></i>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </Fragment>
-    );
-  }
-}
+      </div>
+    </Fragment>
+  );
+};
 
 export default App;
