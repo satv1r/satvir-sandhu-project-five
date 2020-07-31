@@ -44,12 +44,10 @@ class App extends Component {
   switchTheme = (element) => {
     if (this.state.theme === "lightBlock") {
       this.setState({
-        ...this.state,
         theme: "darkBlock",
       });
     } else {
       this.setState({
-        ...this.state,
         theme: "lightBlock",
       });
     }
