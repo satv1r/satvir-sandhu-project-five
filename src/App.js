@@ -162,12 +162,6 @@ class App extends Component {
       ? (document.body.classList.value = "darkBody")
       : (document.body.classList.value = "lightBody");
 
-    // Set button theme based on state theme
-    let buttonTheme = "";
-    this.state.theme === "darkBlock"
-      ? (buttonTheme = "current darkCurrent")
-      : (buttonTheme = "current lightCurrent");
-
     let appsToRender = [];
     this.state.apps.forEach((app) => {
       if (this.state.filter === "All") {
@@ -187,7 +181,6 @@ class App extends Component {
           <ThemeSwitcher
             switchTheme={this.switchTheme}
             theme={this.state.theme}
-            buttonTheme={buttonTheme}
           />
           <h1>Browse cool apps made right here in Canada</h1>
           <Filter filter={this.filter} theme={this.state.theme} />
