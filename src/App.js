@@ -24,6 +24,7 @@ class App extends Component {
     };
   }
 
+  // Toggle display of an element (none / block)
   toggleElement = (element) => {
     if (element.style.display === "block") {
       element.style.display = "none";
@@ -41,20 +42,20 @@ class App extends Component {
     }
   };
 
-  switchTheme = (element) => {
+  // Switch theme in state
+  switchTheme = () => {
     if (this.state.theme === "lightBlock") {
       this.setState({
-        ...this.state,
         theme: "darkBlock",
       });
     } else {
       this.setState({
-        ...this.state,
         theme: "lightBlock",
       });
     }
   };
 
+  // Store any changes in state, for a given input
   handleChange = (e) => {
     this.setState({
       submission: {
@@ -64,9 +65,9 @@ class App extends Component {
     });
   };
 
+  // Set filter in state for given input
   filter = (e) => {
     this.setState({
-      ...this.state,
       filter: e.target.value,
     });
   };
@@ -135,6 +136,8 @@ class App extends Component {
   componentDidMount() {
     // create a variable to store a reference to our database
     const dbRef = firebase.database().ref();
+
+    // Set an event listener to update local reference if firebase gets updated, also runs once
     dbRef.on("value", (response) => {
       const newState = [];
       const data = response.val();
@@ -155,18 +158,10 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.theme === "darkBlock") {
-      document.body.classList.value = "darkBody";
-    } else {
-      document.body.classList.value = "lightBody";
-    }
-
-    let buttonTheme = "lightTheme";
-    if (this.state.theme === "darkBlock") {
-      buttonTheme = "current darkCurrent";
-    } else {
-      buttonTheme = "current lightCurrent";
-    }
+    // Set body theme based on state theme
+    this.state.theme === "darkBlock"
+      ? (document.body.classList.value = "darkBody")
+      : (document.body.classList.value = "lightBody");
 
     let appsToRender = [];
     this.state.apps.forEach((app) => {
@@ -187,7 +182,6 @@ class App extends Component {
           <ThemeSwitcher
             switchTheme={this.switchTheme}
             theme={this.state.theme}
-            buttonTheme={buttonTheme}
           />
           <h1>Browse cool apps made right here in Canada</h1>
           <Filter filter={this.filter} theme={this.state.theme} />

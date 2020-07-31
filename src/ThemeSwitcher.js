@@ -1,6 +1,11 @@
 import React from "react";
 
-const ThemeSwitcher = ({ switchTheme, theme, buttonTheme }) => {
+const ThemeSwitcher = ({ switchTheme, theme }) => {
+  let buttonTheme = "";
+  theme === "darkBlock"
+    ? (buttonTheme = "current darkCurrent")
+    : (buttonTheme = "current lightCurrent");
+
   return (
     <button
       onClick={switchTheme}
