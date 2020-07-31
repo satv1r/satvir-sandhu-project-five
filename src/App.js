@@ -41,7 +41,8 @@ class App extends Component {
     }
   };
 
-  switchTheme = (element) => {
+  // Switch theme in state
+  switchTheme = () => {
     if (this.state.theme === "lightBlock") {
       this.setState({
         theme: "darkBlock",
@@ -53,6 +54,7 @@ class App extends Component {
     }
   };
 
+  // Store any changes in state, for a given input
   handleChange = (e) => {
     this.setState({
       submission: {
@@ -62,9 +64,9 @@ class App extends Component {
     });
   };
 
+  // Set filter in state for given input
   filter = (e) => {
     this.setState({
-      ...this.state,
       filter: e.target.value,
     });
   };
@@ -133,6 +135,8 @@ class App extends Component {
   componentDidMount() {
     // create a variable to store a reference to our database
     const dbRef = firebase.database().ref();
+
+    // Set an event listener to update local reference if firebase gets updated, also runs once
     dbRef.on("value", (response) => {
       const newState = [];
       const data = response.val();
@@ -153,18 +157,16 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.theme === "darkBlock") {
-      document.body.classList.value = "darkBody";
-    } else {
-      document.body.classList.value = "lightBody";
-    }
+    // Set body theme based on state theme
+    this.state.theme === "darkBlock"
+      ? (document.body.classList.value = "darkBody")
+      : (document.body.classList.value = "lightBody");
 
-    let buttonTheme = "lightTheme";
-    if (this.state.theme === "darkBlock") {
-      buttonTheme = "current darkCurrent";
-    } else {
-      buttonTheme = "current lightCurrent";
-    }
+    // Set button theme based on state theme
+    let buttonTheme = "";
+    this.state.theme === "darkBlock"
+      ? (buttonTheme = "current darkCurrent")
+      : (buttonTheme = "current lightCurrent");
 
     let appsToRender = [];
     this.state.apps.forEach((app) => {
