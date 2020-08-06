@@ -2,11 +2,6 @@ import React from "react";
 import { ThemeContext } from "./ThemeContext";
 
 const ThemeSwitcher = ({ switchTheme, theme }) => {
-  let buttonTheme = "";
-  theme === "darkBlock"
-    ? (buttonTheme = "current darkCurrent")
-    : (buttonTheme = "current lightCurrent");
-
   return (
     <ThemeContext>
       {(context) => (
@@ -21,7 +16,7 @@ const ThemeSwitcher = ({ switchTheme, theme }) => {
           <div className="dark">
             <i className="fas fa-moon fa-2x"></i>
           </div>
-          <div className={buttonTheme} id="current"></div>
+          <div className={"switcher-background"} id="current"></div>
         </button>
       )}
     </ThemeContext>
