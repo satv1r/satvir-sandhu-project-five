@@ -154,11 +154,11 @@ const App = () => {
 
   return (
     <Fragment>
-      <div className="wrapper">
-        <ThemeSwitcher switchTheme={switchTheme} theme={theme} />
-        <h1>Browse cool apps made right here in Canada</h1>
-        <Filter filter={filter} theme={theme} />
-        <ThemeProvider>
+      <ThemeProvider>
+        <div className="wrapper">
+          <ThemeSwitcher switchTheme={switchTheme} theme={theme} />
+          <h1>Browse cool apps made right here in Canada</h1>
+          <Filter filter={filter} theme={theme} />
           <div className="cards">
             {appsToRender.map((app) => {
               return (
@@ -172,61 +172,62 @@ const App = () => {
               );
             })}
           </div>
-        </ThemeProvider>
-        <div className="bottom">
-          <SubmissionForm
-            submit={handleSubmit}
-            submitted={submitted}
-            change={handleChange}
-            toggle={toggleElement}
-            theme={theme}
-            title={submission.title}
-            desc={submission.desc}
-            key="form"
-          />
-          <div className="profile">
-            <h2>Designed and Built by Satvir Sandhu</h2>
-            <ul className="links">
-              <li>
-                <a
-                  href="https://github.com/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-github fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://codepen.io/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-codepen fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.behance.net/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-behance fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://twitter.com/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-twitter fa-2x"></i>
-                </a>
-              </li>
-            </ul>
+
+          <div className="bottom">
+            <SubmissionForm
+              submit={handleSubmit}
+              submitted={submitted}
+              change={handleChange}
+              toggle={toggleElement}
+              theme={theme}
+              title={submission.title}
+              desc={submission.desc}
+              key="form"
+            />
+            <div className="profile">
+              <h2>Designed and Built by Satvir Sandhu</h2>
+              <ul className="links">
+                <li>
+                  <a
+                    href="https://github.com/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-github fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://codepen.io/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-codepen fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.behance.net/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-behance fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-twitter fa-2x"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </ThemeProvider>
     </Fragment>
   );
 };
