@@ -4,11 +4,11 @@ import Card from "./Card";
 import Filter from "./Filter";
 import ThemeSwitcher from "./ThemeSwitcher";
 import SubmissionForm from "./SubmissionForm";
+import { ThemeProvider } from "./ThemeContext";
 
 const App = () => {
   const [apps, setApps] = useState([]);
   const [appFilter, setAppFilter] = useState("All");
-  const [theme, setTheme] = useState("lightBlock");
   const [submitted, setSubmitted] = useState("false");
   const [submission, setSubmission] = useState({
     title: "",
@@ -33,11 +33,6 @@ const App = () => {
       element.style.display = "block";
       element.setAttribute("required", "");
     }
-  };
-
-  // Switch theme in state
-  const switchTheme = () => {
-    theme === "lightBlock" ? setTheme("darkBlock") : setTheme("lightBlock");
   };
 
   // Store any changes in state, for a given input
@@ -133,11 +128,6 @@ const App = () => {
     });
   }, []);
 
-  // Set body theme based on state theme
-  theme === "darkBlock"
-    ? (document.body.classList.value = "darkBody")
-    : (document.body.classList.value = "lightBody");
-
   let appsToRender = [];
   apps.forEach((app) => {
     if (appFilter === "All") {
@@ -153,77 +143,79 @@ const App = () => {
 
   return (
     <Fragment>
-      <div className="wrapper">
-        <ThemeSwitcher switchTheme={switchTheme} theme={theme} />
-        <h1>Browse cool apps made right here in Canada</h1>
-        <Filter filter={filter} theme={theme} />
-        <div className="cards">
-          {appsToRender.map((app) => {
-            return (
-              <Card
-                title={app.title}
-                desc={app.desc}
-                platforms={app.platforms}
-                key={app.key}
-                theme={theme}
-              />
-            );
-          })}
-        </div>
-        <div className="bottom">
-          <SubmissionForm
-            submit={handleSubmit}
-            submitted={submitted}
-            change={handleChange}
-            toggle={toggleElement}
-            theme={theme}
-            title={submission.title}
-            desc={submission.desc}
-            key="form"
-          />
-          <div className="profile">
-            <h2>Designed and Built by Satvir Sandhu</h2>
-            <ul className="links">
-              <li>
-                <a
-                  href="https://github.com/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-github fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://codepen.io/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-codepen fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.behance.net/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-behance fa-2x"></i>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://twitter.com/satv1r"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <i className="fab fa-twitter fa-2x"></i>
-                </a>
-              </li>
-            </ul>
+      <ThemeProvider>
+        <div className="wrapper">
+          <ThemeSwitcher />
+          <h1>Browse cool apps made right here in Canada</h1>
+          <Filter filter={filter} />
+          <div className="cards">
+            {appsToRender.map((app) => {
+              return (
+                <Card
+                  title={app.title}
+                  desc={app.desc}
+                  platforms={app.platforms}
+                  key={app.key}
+                />
+              );
+            })}
+          </div>
+
+          <div className="bottom">
+            <SubmissionForm
+              submit={handleSubmit}
+              submitted={submitted}
+              change={handleChange}
+              toggle={toggleElement}
+              theme={"lightBlock"}
+              title={submission.title}
+              desc={submission.desc}
+              key="form"
+            />
+            <div className="profile">
+              <h2>Designed and Built by Satvir Sandhu</h2>
+              <ul className="links">
+                <li>
+                  <a
+                    href="https://github.com/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-github fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://codepen.io/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-codepen fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.behance.net/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-behance fa-2x"></i>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/satv1r"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i className="fab fa-twitter fa-2x"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
+      </ThemeProvider>
     </Fragment>
   );
 };

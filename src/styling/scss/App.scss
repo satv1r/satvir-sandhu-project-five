@@ -128,6 +128,17 @@ a {
   border-radius: 20px;
   background-color: inherit;
   justify-content: space-between;
+
+  .switcher-background {
+    transition: 0.1s ease-in-out;
+    height: 100%;
+    width: 50%;
+    border-radius: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -1;
+  }
   .light,
   .dark {
     width: 50%;
@@ -138,26 +149,13 @@ a {
     justify-content: center;
   }
 
-  .current {
-    transition: 0.1s ease-in-out;
-    height: 100%;
-    width: 50%;
-    border-radius: 20px;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    z-index: -1;
-  }
+  // .light {
+  //   color: $light;
+  // }
 
-  .lightCurrent {
-    transform: translate(-100%, 0);
-    background: $dark;
-  }
-
-  .darkCurrent {
-    transform: translate(0, 0);
-    background: $light;
-  }
+  // .dark {
+  //   color: $dark;
+  // }
 }
 
 button.lightBlock {
@@ -167,6 +165,11 @@ button.lightBlock {
   .dark {
     color: $dark;
   }
+
+  .switcher-background {
+    transform: translate(-100%, 0);
+    background: $dark;
+  }
 }
 
 button.darkBlock {
@@ -175,6 +178,11 @@ button.darkBlock {
   }
   .dark {
     color: $dark;
+  }
+
+  .switcher-background {
+    transform: translate(0, 0);
+    background: $light;
   }
 }
 
