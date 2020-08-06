@@ -4,6 +4,7 @@ import Card from "./Card";
 import Filter from "./Filter";
 import ThemeSwitcher from "./ThemeSwitcher";
 import SubmissionForm from "./SubmissionForm";
+import { ThemeProvider } from "./ThemeContext";
 
 const App = () => {
   const [apps, setApps] = useState([]);
@@ -157,19 +158,21 @@ const App = () => {
         <ThemeSwitcher switchTheme={switchTheme} theme={theme} />
         <h1>Browse cool apps made right here in Canada</h1>
         <Filter filter={filter} theme={theme} />
-        <div className="cards">
-          {appsToRender.map((app) => {
-            return (
-              <Card
-                title={app.title}
-                desc={app.desc}
-                platforms={app.platforms}
-                key={app.key}
-                theme={theme}
-              />
-            );
-          })}
-        </div>
+        <ThemeProvider>
+          <div className="cards">
+            {appsToRender.map((app) => {
+              return (
+                <Card
+                  title={app.title}
+                  desc={app.desc}
+                  platforms={app.platforms}
+                  key={app.key}
+                  theme={theme}
+                />
+              );
+            })}
+          </div>
+        </ThemeProvider>
         <div className="bottom">
           <SubmissionForm
             submit={handleSubmit}
