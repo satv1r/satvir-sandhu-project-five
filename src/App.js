@@ -9,7 +9,6 @@ import { ThemeProvider } from "./ThemeContext";
 const App = () => {
   const [apps, setApps] = useState([]);
   const [appFilter, setAppFilter] = useState("All");
-  const [theme, setTheme] = useState("lightBlock");
   const [submitted, setSubmitted] = useState("false");
   const [submission, setSubmission] = useState({
     title: "",
@@ -34,11 +33,6 @@ const App = () => {
       element.style.display = "block";
       element.setAttribute("required", "");
     }
-  };
-
-  // Switch theme in state
-  const switchTheme = () => {
-    theme === "lightBlock" ? setTheme("darkBlock") : setTheme("lightBlock");
   };
 
   // Store any changes in state, for a given input
@@ -134,11 +128,6 @@ const App = () => {
     });
   }, []);
 
-  // Set body theme based on state theme
-  theme === "darkBlock"
-    ? (document.body.classList.value = "darkBody")
-    : (document.body.classList.value = "lightBody");
-
   let appsToRender = [];
   apps.forEach((app) => {
     if (appFilter === "All") {
@@ -156,9 +145,9 @@ const App = () => {
     <Fragment>
       <ThemeProvider>
         <div className="wrapper">
-          <ThemeSwitcher switchTheme={switchTheme} theme={theme} />
+          <ThemeSwitcher />
           <h1>Browse cool apps made right here in Canada</h1>
-          <Filter filter={filter} theme={theme} />
+          <Filter filter={filter} />
           <div className="cards">
             {appsToRender.map((app) => {
               return (
@@ -167,7 +156,6 @@ const App = () => {
                   desc={app.desc}
                   platforms={app.platforms}
                   key={app.key}
-                  theme={theme}
                 />
               );
             })}
@@ -179,7 +167,7 @@ const App = () => {
               submitted={submitted}
               change={handleChange}
               toggle={toggleElement}
-              theme={theme}
+              theme={"lightBlock"}
               title={submission.title}
               desc={submission.desc}
               key="form"

@@ -1,14 +1,6 @@
 import React from "react";
 
-const SubmissionForm = ({
-  submit,
-  submitted,
-  change,
-  toggle,
-  theme,
-  title,
-  desc,
-}) => {
+const SubmissionForm = ({ submit, submitted, change, toggle, title, desc }) => {
   const iosUrl = document.getElementById("iosUrl");
   const androidUrl = document.getElementById("androidUrl");
   const webUrl = document.getElementById("webUrl");

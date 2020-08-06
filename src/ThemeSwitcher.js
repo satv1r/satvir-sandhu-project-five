@@ -1,9 +1,9 @@
 import React from "react";
 import { ThemeContext } from "./ThemeContext";
 
-const ThemeSwitcher = ({ switchTheme, theme }) => {
+const ThemeSwitcher = () => {
   return (
-    <ThemeContext>
+    <ThemeContext.Consumer>
       {(context) => (
         <button
           onClick={context.toggleTheme}
@@ -19,7 +19,7 @@ const ThemeSwitcher = ({ switchTheme, theme }) => {
           <div className={"switcher-background"} id="current"></div>
         </button>
       )}
-    </ThemeContext>
+    </ThemeContext.Consumer>
   );
 };
 
