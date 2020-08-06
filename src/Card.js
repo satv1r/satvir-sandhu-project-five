@@ -6,7 +6,7 @@ const Card = ({ title, desc, platforms }) => {
   return (
     <ThemeContext.Consumer>
       {(context) => (
-        <article className={"card " + context} tabIndex="0">
+        <article className={"card " + context.theme} tabIndex="0">
           <div className="cardWrapper">
             <div className="info">
               <h2 className="cardTitle">{title}</h2>
@@ -20,7 +20,7 @@ const Card = ({ title, desc, platforms }) => {
                     <DownloadBlock
                       platform={platform}
                       key={title + index}
-                      theme={context}
+                      theme={context.theme}
                     />
                   );
                 })}
