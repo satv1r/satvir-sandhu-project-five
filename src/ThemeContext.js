@@ -9,6 +9,12 @@ export const ThemeProvider = (props) => {
     theme === "lightBlock" ? setTheme("darkBlock") : setTheme("lightBlock");
   };
 
+  const body = document.body;
+
+  theme === "darkBlock"
+    ? (body.classList = "darkBody")
+    : (body.classList.value = "");
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {props.children}

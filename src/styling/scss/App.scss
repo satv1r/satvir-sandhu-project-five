@@ -149,16 +149,23 @@ a {
     justify-content: center;
   }
 
-  .light {
-    color: $light;
-  }
+  // .light {
+  //   color: $light;
+  // }
 
-  .dark {
-    color: $dark;
-  }
+  // .dark {
+  //   color: $dark;
+  // }
 }
 
 button.lightBlock {
+  .light {
+    color: $light;
+  }
+  .dark {
+    color: $dark;
+  }
+
   .switcher-background {
     transform: translate(-100%, 0);
     background: $dark;
@@ -166,6 +173,13 @@ button.lightBlock {
 }
 
 button.darkBlock {
+  .light {
+    color: $light;
+  }
+  .dark {
+    color: $dark;
+  }
+
   .switcher-background {
     transform: translate(0, 0);
     background: $light;

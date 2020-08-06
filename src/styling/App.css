@@ -495,6 +495,18 @@ a {
           justify-content: space-between;
 }
 
+.themeSwitcher .switcher-background {
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+  height: 100%;
+  width: 50%;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: -1;
+}
+
 .themeSwitcher .light,
 .themeSwitcher .dark {
   width: 50%;
@@ -511,30 +523,6 @@ a {
           justify-content: center;
 }
 
-.themeSwitcher .current {
-  -webkit-transition: 0.1s ease-in-out;
-  transition: 0.1s ease-in-out;
-  height: 100%;
-  width: 50%;
-  border-radius: 20px;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  z-index: -1;
-}
-
-.themeSwitcher .lightCurrent {
-  -webkit-transform: translate(-100%, 0);
-          transform: translate(-100%, 0);
-  background: #1f1b24;
-}
-
-.themeSwitcher .darkCurrent {
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
-  background: #eef0f3;
-}
-
 button.lightBlock .light {
   color: #eef0f3;
 }
@@ -543,12 +531,24 @@ button.lightBlock .dark {
   color: #1f1b24;
 }
 
+button.lightBlock .switcher-background {
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  background: #1f1b24;
+}
+
 button.darkBlock .light {
   color: #eef0f3;
 }
 
 button.darkBlock .dark {
   color: #1f1b24;
+}
+
+button.darkBlock .switcher-background {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+  background: #eef0f3;
 }
 
 .cards {
