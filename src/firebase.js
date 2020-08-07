@@ -1,9 +1,10 @@
 import firebase from "firebase/app";
 import "firebase/database";
+import "firebase/auth";
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "AIzaSyA5VjgmPHHVTtqU3XBJLBD08_Gh9N_ZHw0",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "satvir-sandhu-project-five.firebaseapp.com",
   databaseURL: "https://satvir-sandhu-project-five.firebaseio.com",
   projectId: "satvir-sandhu-project-five",
@@ -11,6 +12,7 @@ var firebaseConfig = {
   messagingSenderId: "71907459875",
   appId: "1:71907459875:web:5bd07abe9425ef5c03c296",
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 

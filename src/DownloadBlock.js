@@ -1,7 +1,7 @@
 import React from "react";
 
-const DownloadBlock = ({ platform, theme }) => {
-  let colors = {
+const DownloadBlock = ({ platform }) => {
+  let icons = {
     iOS: "fab fa-apple",
     Android: "fab fa-google-play",
     Web: "fas fa-globe-americas",
@@ -10,7 +10,7 @@ const DownloadBlock = ({ platform, theme }) => {
     <a
       href={platform[1]}
       tabIndex="0"
-      className={"downloadBlock " + colors[platform[0]] + " fa-2x"}
+      className={"downloadBlock " + icons[platform[0]] + " fa-2x"}
       rel="noopener noreferrer"
       target="_blank"
       aria-label={"Link to app on " + platform[0]}
