@@ -181,6 +181,7 @@ const App = () => {
                     href="https://github.com/satv1r"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit Satvirs GitHub"
                   >
                     <i className="fab fa-github fa-2x"></i>
                   </a>
@@ -190,6 +191,7 @@ const App = () => {
                     href="https://codepen.io/satv1r"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit Satvirs CodePen"
                   >
                     <i className="fab fa-codepen fa-2x"></i>
                   </a>
@@ -199,6 +201,7 @@ const App = () => {
                     href="https://www.behance.net/satv1r"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit Satvirs Behance"
                   >
                     <i className="fab fa-behance fa-2x"></i>
                   </a>
@@ -208,6 +211,7 @@ const App = () => {
                     href="https://twitter.com/satv1r"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="Visit Satvirs Twitter"
                   >
                     <i className="fab fa-twitter fa-2x"></i>
                   </a>

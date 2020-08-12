@@ -9,6 +9,7 @@ const ThemeSwitcher = () => {
           onClick={context.toggleTheme}
           className={"themeSwitcher " + context.theme}
           id="themeSwitcher"
+          aria-label="switch website color theme"
         >
           <div className="light">
             <i className="fas fa-sun fa-2x"></i>
