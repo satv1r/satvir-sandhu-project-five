@@ -10,12 +10,12 @@ const DownloadBlock = ({ platform }) => {
     <a
       href={platform[1]}
       tabIndex="0"
-      className={"downloadBlock " + icons[platform[0]] + " fa-2x"}
+      className={"downloadBlock"}
       rel="noopener noreferrer"
       target="_blank"
       aria-label={"Link to app on " + platform[0]}
     >
-      <i className={platform[0]}></i>
+      <i className={icons[platform[0]]}></i>
     </a>
   );
 };
