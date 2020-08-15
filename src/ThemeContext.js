@@ -1,6 +1,10 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useContext } from "react";
 
-export const ThemeContext = createContext();
+const ThemeContext = createContext();
+const ThemeUpdateContext = createContext();
+
+export const useTheme = () => useContext(ThemeContext);
+export const useToggleTheme = () => useContext(ThemeUpdateContext);
 
 export const ThemeProvider = (props) => {
   const [theme, setTheme] = useState("lightBlock");
@@ -16,8 +20,10 @@ export const ThemeProvider = (props) => {
     : (body.classList.value = "");
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      {props.children}
+    <ThemeContext.Provider value={theme}>
+      <ThemeUpdateContext.Provider value={toggleTheme}>
+        {props.children}
+      </ThemeUpdateContext.Provider>
     </ThemeContext.Provider>
   );
 };
